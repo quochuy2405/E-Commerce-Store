@@ -1,0 +1,6 @@
+.Navigation {
+  width: 200px;
+  height: calc(100vh - var(--header-height) - var(--footer-height));
+  overflow: scroll;
+  background-color: var(--color-white);
+}

@@ -1,0 +1,96 @@
+@use '../../styles/abtracts/mixins' as *;
+.treeView {
+  background-color: var(--color-white);
+
+  height: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 400;
+
+  padding: 4px 8px;
+  margin: 0 5px;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-gray);
+  transition: all linear 0.15s;
+
+  &:hover {
+    // background-color: var(--color-main-80);
+    // color: var(--color-white);
+    transition: all linear 0.1s;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px rgb(157, 157, 157);
+  }
+}
+.listTreeItem {
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+  overflow: hidden;
+}
+
+.treeItem {
+  background-color: var(--color-white);
+
+  height: 34px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+
+  padding: 4px 8px;
+  margin: 5px;
+  font-size: 0.9rem;
+  margin-left: 10%;
+  border-radius: 2px;
+  color: var(--color-text-gray);
+  transition: all linear 0.15s;
+
+  &:hover {
+    transition: all linear 0.1s;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px rgb(157, 157, 157);
+  }
+}
+.activeTree {
+  background-color: var(--color-main);
+  color: var(--color-white);
+  transition: all linear 0.15s;
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.activeItem {
+  background-color: var(--color-main);
+  color: var(--color-white);
+  transition: all linear 0.15s;
+  &:hover {
+    box-shadow: none;
+  }
+}
+.activeChevron {
+  transform: rotate(90deg);
+  color: var(--color-white);
+  transition: all linear 0.15s;
+}
+
+.chevron {
+  color: var(--color-text-gray);
+  transition: all linear 0.15s;
+}
+
+.titleTree {
+  font-weight: 500;
+  padding: 10px 8px;
+  color: rgb(159, 158, 158);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.listTree {
+}
+
+.activeListTree.listTreeItem {
+  max-height: var(--max-HeightListTree);
+  transition: max-height 0.17s ease-in;
+}
