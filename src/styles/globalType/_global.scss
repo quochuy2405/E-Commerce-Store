@@ -1,0 +1,8 @@
+@mixin paperBlank($width, $height) {
+  margin: 10px;
+  width: $width;
+  height: $height;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 4px 2px rgba(180, 178, 178, 0.782);
+}
