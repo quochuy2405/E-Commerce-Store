@@ -1,4 +1,5 @@
 @use '../abtracts/mixins' as *;
+@use '../base/reset';
 .admin {
   display: flex;
   height: 100vh;
@@ -16,4 +17,7 @@
 }
 .body {
   flex: 1;
+  height: calc(100vh - var(--header-height) - var(--footer-height));
+  padding: 10px;
+  box-sizing: border-box;
 }

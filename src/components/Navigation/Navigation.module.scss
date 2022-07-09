@@ -1,5 +1,5 @@
 .Navigation {
-  width: 200px;
+  width: var(--width-navigation);
   height: calc(100vh - var(--header-height) - var(--footer-height));
   overflow: scroll;
   background-color: var(--color-white);
