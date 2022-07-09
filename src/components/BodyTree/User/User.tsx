@@ -29,8 +29,8 @@ function User() {
           <div className={Styles.boxUser}></div>
           <div className={Styles.boxUser}></div>
         </div>
-        <div className={Styles.role}>
-          <div className={Styles.boxRole}></div>
+        <div className={Styles.plan}>
+          <div className={Styles.boxPlan}></div>
           <div className={Styles.boxUser}></div>
           <div className={Styles.boxUser}></div>
           <div className={Styles.boxUser}></div>
