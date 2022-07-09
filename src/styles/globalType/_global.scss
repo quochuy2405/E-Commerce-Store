@@ -1,7 +1,5 @@
-@mixin paperBlank($width, $height) {
-  width: $width;
-  height: $height;
+@mixin paperBlank {
   background-color: white;
   border-radius: 1rem;
-  box-shadow: 0 0 4px 2px rgba(180, 178, 178, 0.782);
+  box-shadow: 0 0 6px 1px rgba(186, 184, 184, 0.755);
 }

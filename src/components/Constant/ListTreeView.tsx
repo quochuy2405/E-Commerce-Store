@@ -1,4 +1,5 @@
 import { MdOutlineAccountBox, MdOutlineAssignment, MdOutlineDashboard } from 'react-icons/md'
+import { DashBoard, User as BodyUser } from '../BodyTree'
 import type { TreeView } from '../Interface'
 import { Hello, Home, User } from './ListTreeItemKey'
 const ListTreeView: Array<TreeView> = [
@@ -10,7 +11,7 @@ const ListTreeView: Array<TreeView> = [
     titleTree: 'Home',
     nameTree: 'Dashboard',
     icon: <MdOutlineDashboard size={18} />,
-    body: <p>Dashboard</p>
+    body: <DashBoard />
   },
   {
     link: '/admin/user',
@@ -20,7 +21,7 @@ const ListTreeView: Array<TreeView> = [
     nameTree: 'User',
     itemLinks: User,
     icon: <MdOutlineAccountBox size={18} />,
-    body: <p>User</p>
+    body: <BodyUser />
   },
   {
     link: '/admin/hello',
