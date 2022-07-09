@@ -36,6 +36,7 @@
   height: 34px;
   display: flex;
   align-items: center;
+  gap: 0 5px;
   font-weight: 400;
 
   padding: 4px 8px;
@@ -89,9 +90,16 @@
 }
 .listTree {
   background-color: white;
+  margin: 10px;
 }
 
 .activeListTree.listTreeItem {
   max-height: var(--max-HeightListTree);
   transition: max-height 0.17s ease-in;
+}
+.nameTree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 5px;
 }

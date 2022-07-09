@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
 import Styles from '@/components/Navigation/Navigation.module.scss'
+import ListTreeView from '../Constant/ListTreeView'
 import TreeView from '../TreeView'
 function Navigation() {
-  const [active, setActive] = useState<boolean>()
   return (
     <div className={Styles.Navigation}>
-      <TreeView active={active} setActive={setActive} sizeItem={3} />
-      <TreeView active={active} setActive={setActive} sizeItem={3} />
-      <TreeView active={active} setActive={setActive} sizeItem={3} />
-      <TreeView active={active} setActive={setActive} sizeItem={3} />
+      {ListTreeView?.map((item) => (
+        <TreeView
+          key={item.link + item.nameTree}
+          link={item?.link}
+          treeKey={item?.treeKey}
+          sizeItem={item?.sizeItem}
+          itemLinks={item?.itemLinks}
+          titleTree={item?.titleTree}
+          nameTree={item?.nameTree}
+          icon={item?.icon}
+        />
+      ))}
     </div>
   )
 }

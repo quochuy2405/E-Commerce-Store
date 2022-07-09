@@ -1,41 +1,62 @@
-import React from 'react'
+import type { TreeItem as ModelItem, TreeView as Model } from '@/components/Interface'
 import Styles from '@/components/TreeView/TreeView.module.scss'
-import { TreeView as Model } from '@/components/Interface'
-import { FiChevronRight } from 'react-icons/fi'
-import { GoPrimitiveDot } from 'react-icons/go'
 import classnames from 'clsx'
 import { useState } from 'react'
-import { maxHeight } from '@mui/system'
+import { FiChevronRight } from 'react-icons/fi'
+import { GoPrimitiveDot } from 'react-icons/go'
+import { Link, useParams } from 'react-router-dom'
 
-function TreeItem() {
-  const [active, setActive] = useState(false)
-  // const [active, setState] = useState(false)
-
+function TreeItem(props: ModelItem) {
+  const { link, itemKey, treeItemName } = props
+  const { slug, opt } = useParams()
   return (
-    <div className={`${active && Styles.activeItem} ${Styles.treeItem}`} onClick={() => setActive((e) => !e)}>
+    <Link
+      to={link}
+      className={`${itemKey === opt && link === `/admin/${slug}/${opt}` && Styles.activeItem} ${
+        Styles.treeItem
+      }`}
+    >
       <GoPrimitiveDot />
-      <p>TreeItem</p>
-    </div>
+      <p>{treeItemName}</p>
+    </Link>
   )
 }
 
 function TreeView(props: Model) {
-  const { active, setActive, sizeItem } = props
-  // const [active, setState] = useState(false)
+  const { link, treeKey, sizeItem, titleTree, nameTree, itemLinks, icon } = props
+  const [openTreeItem, setOpenTreeItem] = useState(false)
+  const { slug } = useParams()
 
   document.documentElement.style.setProperty('--max-HeightListTree', `${sizeItem * 40}px`)
   return (
     <div className={Styles.listTree}>
-      <p className={Styles.titleTree}>Home</p>
-      <div className={`${active && Styles.activeTree} ${Styles.treeView}`} onClick={() => setActive((e) => !e)}>
-        <p>Treeview</p>
-        <FiChevronRight className={classnames(active ? Styles.activeChevron : Styles.chevron)} size={18} />
-        {}
-      </div>
-      <div className={`${active && Styles.activeListTree} ${Styles.listTreeItem}`}>
-        <TreeItem />
-        <TreeItem />
-        <TreeItem />
+      <p className={Styles.titleTree}>{titleTree}</p>
+      <Link to={link}>
+        <div
+          className={`${treeKey === slug && Styles.activeTree} ${Styles.treeView}`}
+          onClick={() => setOpenTreeItem((e) => !e)}
+        >
+          <div className={Styles.nameTree}>
+            {icon}
+            <p>{nameTree}</p>
+          </div>
+          <FiChevronRight
+            className={classnames(treeKey === slug ? Styles.activeChevron : Styles.chevron)}
+            size={18}
+          />
+          {}
+        </div>
+      </Link>
+
+      <div className={`${openTreeItem && Styles.activeListTree} ${Styles.listTreeItem}`}>
+        {itemLinks?.map((item) => (
+          <TreeItem
+            key={`${link}/${item.key}`}
+            link={`${link}/${item.key}`}
+            treeItemName={item.name}
+            itemKey={item.key}
+          />
+        ))}
       </div>
     </div>
   )
