@@ -3,5 +3,4 @@ build/**
 out/**
 public/**
 lint-staged.config.js
-next-env.d.ts
 pnpm-lock.yaml
