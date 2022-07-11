@@ -57,6 +57,11 @@
   background-color: var(--color-main);
   color: var(--color-white);
   transition: all linear 0.15s;
+
+  & .chevron {
+    color: var(--color-white);
+    transition: all linear 0.15s;
+  }
   &:hover {
     box-shadow: none;
   }
@@ -66,6 +71,7 @@
   background-color: var(--color-main);
   color: var(--color-white);
   transition: all linear 0.15s;
+
   &:hover {
     box-shadow: none;
   }

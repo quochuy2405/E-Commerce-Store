@@ -14,11 +14,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   height: 80%;
   margin: auto 0;
 }
 .imgLogin {
   flex: 1;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 .title {
   font-size: 2rem;
@@ -26,16 +32,14 @@
   text-transform: uppercase;
 }
 .inputForm {
-  padding-top: 50px;
+  padding-top: 30px;
   width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 22px 0;
 }
-.inputControll {
-  width: 100%;
-  border: 2px solid var(--color-main-80);
-  border-radius: 2px;
-}
-// .logo {
-// }
+
 .boxInput {
   & p {
     padding: 5px 0;
@@ -44,4 +48,48 @@
 }
 .boxInput + .boxInput {
   margin: 10px 0;
+}
+.forgot {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  width: 70%;
+}
+.rememberMe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.forgotPasss {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btnLogin {
+  display: flex;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.logo {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  margin: 20px 0;
+  gap: 10px;
+
+  font-size: 1.4rem;
+  font-weight: 500;
+  img {
+    width: fit-content;
+    height: 100%;
+    object-fit: contain;
+  }
 }

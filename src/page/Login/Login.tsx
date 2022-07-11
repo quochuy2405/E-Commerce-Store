@@ -1,23 +1,66 @@
-import React from 'react'
+/* eslint-disable @next/next/no-img-element */
+import { Button, Input } from '@/components/HPComponents'
 import Styles from '@/styles/page/Login.module.scss'
+import React, { useState } from 'react'
+import loginImage from '/image/login.svg'
+import logo from '/image/logo.png'
 function Login() {
+  const [validate, setValidate] = useState({
+    userName: false,
+    password: false
+  })
+
+  const [dataForm, setDataForm] = useState({
+    userName: '',
+    password: ''
+  })
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDataForm({ ...dataForm, [e.target.name]: e.target.value })
+    setValidate({ ...validate, [e.target.name]: !e.target.value })
+  }
   return (
     <div className={Styles.login}>
-      <div className={Styles.logo}></div>
       <div className={Styles.loginForm}>
-        <div className={Styles.title}>Sign in</div>
+        <div className={Styles.logo}>
+          <img src={logo} alt="logo" />
+          <p>NAME</p>
+        </div>
+        <div className={Styles.title}>Đăng nhập</div>
         <div className={Styles.inputForm}>
-          <div className={Styles.boxInput}>
-            <p>Email</p>
-            <input type="text" className={Styles.inputControll} />
+          <Input
+            value={dataForm.userName}
+            handelChange={handleOnChange}
+            type="text"
+            invalid={validate.userName}
+            textInvalid="Hãy nhập tên đăng nhập"
+            title="Tên đăng nhập"
+            name="userName"
+          />
+          <Input
+            value={dataForm.password}
+            handelChange={handleOnChange}
+            type="password"
+            invalid={validate.password}
+            textInvalid="Hãy nhập mật khẩu"
+            title="Mật khẩu"
+            name="password"
+          />
+        </div>
+        <div className={Styles.forgot}>
+          <div className={Styles.rememberMe}>
+            <input type="checkbox" name="rememberMe" id="rememberMe" />
+            <p>Nhớ mật khẩu?</p>
           </div>
-          <div className={Styles.boxInput}>
-            <p>Password</p>
-            <input type="text" className={Styles.inputControll} />
-          </div>
+          <div className={Styles.forgotPasss}>Quên mật khẩu</div>
+        </div>
+        <div className={Styles.btnLogin}>
+          <Button name="Đăng nhập" width="100%" height="40px" />
         </div>
       </div>
-      <div className={Styles.imgLogin}></div>
+      <div className={Styles.imgLogin}>
+        <img src={loginImage} alt="Login" />
+      </div>
     </div>
   )
 }

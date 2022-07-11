@@ -41,7 +41,9 @@ function TreeView(props: Model) {
             <p>{nameTree}</p>
           </div>
           <FiChevronRight
-            className={classnames(treeKey === slug ? Styles.activeChevron : Styles.chevron)}
+            className={`${
+              treeKey === slug && openTreeItem ? Styles.activeChevron : Styles.chevron
+            }`}
             size={18}
           />
           {}

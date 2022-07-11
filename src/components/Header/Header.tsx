@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Styles from './Header.module.scss'
 import logo from '/image/logo.png'
