@@ -1,4 +1,4 @@
-@use '../globalType/global' as *;
+@use '../../components/HPComponents/layouts/common' as *;
 .login {
   @include paperBlank;
   position: absolute;

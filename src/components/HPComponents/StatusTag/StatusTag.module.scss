@@ -1,0 +1,25 @@
+.success,
+.error,
+.warning {
+  background-color: rgb(209, 209, 209);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  margin: auto;
+  border-radius: 100rem;
+  margin: 5px;
+}
+
+.success {
+  background-color: #14c38e;
+  color: white;
+}
+.error {
+  background-color: #ff5d5d;
+  color: white;
+}
+.warning {
+  background-color: #ffd365;
+  color: white;
+}

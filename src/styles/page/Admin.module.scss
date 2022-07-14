@@ -1,11 +1,6 @@
 @use '../abtracts/mixins' as *;
 @use '../base/reset';
-.admin {
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  flex-direction: column;
-}
+@use '../../components/HPComponents/layouts/common' as *;
 .main {
   flex: 1;
   display: flex;

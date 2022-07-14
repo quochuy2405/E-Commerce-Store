@@ -53,10 +53,10 @@ function TreeView(props: Model) {
       <div className={`${openTreeItem && Styles.activeListTree} ${Styles.listTreeItem}`}>
         {itemLinks?.map((item) => (
           <TreeItem
-            key={`${link}/${item.key}`}
-            link={`${link}/${item.key}`}
-            treeItemName={item.name}
-            itemKey={item.key}
+            key={`${link}/${item?.key}`}
+            link={`${link}/${item?.key}`}
+            treeItemName={item?.name}
+            itemKey={item?.key}
           />
         ))}
       </div>

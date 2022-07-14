@@ -1,0 +1,30 @@
+@mixin paperBlank {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 6px 1px rgba(186, 184, 184, 0.755);
+}
+@mixin button {
+  padding: 5px 15px;
+  min-height: 35px;
+  color: white;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+
+  gap: 5px;
+  border-radius: 3px;
+  margin: 10px 0;
+  font-weight: 400;
+  transition: all ease-in 0.2s;
+  background-color: var(--color-gray);
+  cursor: pointer;
+  opacity: 0.8;
+  &:hover {
+    background-color: var(--color-main);
+    transition: all ease-in 0.2s;
+    opacity: 1;
+  }
+}

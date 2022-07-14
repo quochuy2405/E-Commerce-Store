@@ -14,4 +14,9 @@ interface Button {
   width?: string
   height?: string
 }
-export type { Input, Button }
+
+interface StatusTag {
+  title: string
+  type: 'success' | 'error' | 'warning'
+}
+export type { Input, Button, StatusTag }

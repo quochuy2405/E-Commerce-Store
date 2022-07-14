@@ -1,25 +1,29 @@
 @use '../../../styles/abtracts/mixins' as *;
-@use '../../../styles/globalType/global' as *;
+@use '../layouts/common' as *;
 .table {
   @include paperBlank;
   width: 100%;
   height: 100%;
   border-radius: 5px;
   padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+
+  flex-direction: column;
 }
 .tableHeader {
   display: flex;
   width: 100%;
-  background-color: var(--color-main);
-  line-height: 35px;
+  background-color: white;
+  line-height: 55px;
   padding: 0 1px;
   margin: 10px 0;
 
   border-radius: 2px;
-  color: white;
+  color: rgb(61, 61, 61);
   font-weight: 600;
   font-size: 0.9rem;
-  box-shadow: 0 0 8px 1px rgb(224, 224, 224);
+  border-bottom: 3px solid rgb(132, 132, 132);
 }
 
 .tableTH {
@@ -30,7 +34,7 @@
 
 .tableBody {
   width: 100%;
-  height: 80%;
+  height: 70%;
   padding: 0 1px;
   overflow: scroll;
   box-shadow: 0 0 8px 1px rgb(224, 224, 224);
@@ -38,14 +42,14 @@
 
 .title {
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 700;
   margin: 10px;
 }
 .tableTR {
   display: flex;
   width: 100%;
   background-color: rgb(255, 255, 255);
-  line-height: 35px;
+  line-height: 55px;
   padding: 0 10px;
 
   border-radius: 2px;
@@ -55,8 +59,7 @@
   box-shadow: 0 0 4px 2px rgb(248, 248, 248);
 }
 .tableTR + .tableTR {
-  background-color: rgba(255, 95, 67, 0.858);
-  color: white;
+  border-top: 2px solid rgb(218, 218, 218);
   margin: 2px 0;
 }
 .tableTD {
@@ -64,4 +67,57 @@
   padding-left: 10px;
   min-width: 100px;
   cursor: pointer;
+}
+.optionTable {
+  display: flex;
+  justify-content: space-between;
+}
+.groupButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 20px;
+}
+.buttonItem {
+  @include button;
+}
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  gap: 10px;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.pageTable {
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 1px 1px #d8d8d8;
+  border-radius: 2px;
+  cursor: pointer;
+  color: #789395;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+
+  font-size: 0.8rem;
+  background-color: rgb(244, 244, 244);
+  &:hover,
+  &.active {
+    background-color: #789395;
+    color: white;
+  }
+}
+.dot {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
