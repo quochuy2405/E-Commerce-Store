@@ -4,7 +4,8 @@ import Styles from '@/styles/page/Login.module.scss'
 import React, { useState } from 'react'
 import loginImage from '/image/login.svg'
 import logo from '/image/logo.png'
-function Login() {
+
+function Login(): JSX.Element {
   const [validate, setValidate] = useState({
     userName: false,
     password: false
@@ -15,10 +16,12 @@ function Login() {
     password: ''
   })
 
+  // handle on change set form data and validate of field data is null
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDataForm({ ...dataForm, [e.target.name]: e.target.value })
     setValidate({ ...validate, [e.target.name]: !e.target.value })
   }
+
   return (
     <div className={Styles.login}>
       <div className={Styles.loginForm}>

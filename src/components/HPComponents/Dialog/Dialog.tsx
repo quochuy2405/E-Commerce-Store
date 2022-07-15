@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
 import Styles from '@/components/HPComponents/Dialog/Dialog.module.scss'
-function Dialog() {
+import { useState } from 'react'
+
+function Dialog(): JSX.Element {
   const [open, setOpen] = useState(false)
+
   return (
     <>
       <div

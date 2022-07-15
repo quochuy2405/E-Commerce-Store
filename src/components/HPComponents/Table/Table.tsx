@@ -3,7 +3,6 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { TbTableExport } from 'react-icons/tb'
 import { toast, ToastContainer } from 'react-toastify'
-
 import { memo, useState } from 'react'
 import 'react-toastify/dist/ReactToastify.css'
 import StatusTag from '../StatusTag'
@@ -35,7 +34,7 @@ const listTitle = [
   }
 ]
 
-function Table() {
+function Table(): JSX.Element {
   const [navigation, setNavigation] = useState({
     _limit: 5,
     _start: 1,
@@ -132,7 +131,7 @@ function Table() {
             <FiChevronLeft />
           </div>
           {caculatorPageStart(navigation._page) + navigation._limit - 1 >
-            navigation._total - navigation._limit && <p>...</p>}
+            navigation._total - navigation._limit && <p className={Styles.dot}>...</p>}
           {Array.from({ length: navigation._total }, (_, i) => i + 1)
             .slice(
               caculatorPageStart(navigation._page) - 1,
@@ -148,7 +147,7 @@ function Table() {
               </div>
             ))}
           {caculatorPageStart(navigation._page) + navigation._limit - 1 < navigation._total && (
-            <p>...</p>
+            <p className={Styles.dot}>...</p>
           )}
           <div className={Styles.pageTable} onClick={nextPage}>
             <FiChevronRight />

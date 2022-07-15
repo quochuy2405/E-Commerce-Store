@@ -4,6 +4,7 @@ import notfound from '/image/error_404.svg'
 import Styles from '@/styles/page/Page404.module.scss'
 import { Metadata } from '@/components'
 import { Link } from 'react-router-dom'
+
 function Page404() {
   return (
     <>

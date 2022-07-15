@@ -1,14 +1,14 @@
 import type { TreeItem as ModelItem, TreeView as Model } from '@/components/Interface'
 import Styles from '@/components/TreeView/TreeView.module.scss'
-import classnames from 'clsx'
 import { useState } from 'react'
 import { FiChevronRight } from 'react-icons/fi'
 import { GoPrimitiveDot } from 'react-icons/go'
 import { Link, useParams } from 'react-router-dom'
 
-function TreeItem(props: ModelItem) {
+function TreeItem(props: ModelItem): JSX.Element {
   const { link, itemKey, treeItemName } = props
   const { slug, opt } = useParams()
+
   return (
     <Link
       to={link}
@@ -22,12 +22,14 @@ function TreeItem(props: ModelItem) {
   )
 }
 
-function TreeView(props: Model) {
+function TreeView(props: Model): JSX.Element {
   const { link, treeKey, sizeItem, titleTree, nameTree, itemLinks, icon } = props
   const [openTreeItem, setOpenTreeItem] = useState(false)
   const { slug } = useParams()
 
+  // set max height for each object of tree view
   document.documentElement.style.setProperty('--max-HeightListTree', `${sizeItem * 40}px`)
+
   return (
     <div className={Styles.listTree}>
       <p className={Styles.titleTree}>{titleTree}</p>

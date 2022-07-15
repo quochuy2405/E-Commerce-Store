@@ -19,4 +19,10 @@ interface StatusTag {
   title: string
   type: 'success' | 'error' | 'warning'
 }
-export type { Input, Button, StatusTag }
+
+interface Icon {
+  image: string
+  size: number
+}
+
+export type { Input, Button, StatusTag, Icon }

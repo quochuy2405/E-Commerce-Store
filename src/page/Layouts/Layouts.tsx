@@ -2,7 +2,7 @@ import { Footer, Header } from '@/components'
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-function Layouts() {
+function Layouts(): JSX.Element {
   return (
     <React.Fragment>
       <Header />

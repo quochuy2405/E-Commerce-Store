@@ -1,12 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
-interface IconProps {
-  image: string
-  size: number
-}
+import type { Icon as Types } from '../Interface'
 
-function Icon(props: IconProps) {
+function Icon(props: Types): JSX.Element {
   const { image, size } = props
+
   return (
     <div style={{ width: `${size}px`, height: `${size}px`, borderRadius: 'inherit' }}>
       <img src={image} alt="" />

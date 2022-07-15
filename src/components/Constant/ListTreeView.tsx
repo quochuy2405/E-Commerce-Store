@@ -2,6 +2,8 @@ import { MdOutlineAccountBox, MdOutlineAssignment, MdOutlineDashboard } from 're
 import { DashBoard, User as BodyUser } from '../BodyTree'
 import type { TreeView } from '../Interface'
 import { Hello, Home, User } from './ListTreeItemKey'
+
+// list review will be render main tag for each object
 const ListTreeView: Array<TreeView> = [
   {
     link: '/admin/dashboard',

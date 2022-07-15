@@ -1,9 +1,10 @@
 import React from 'react'
-import type { StatusTag as Type } from '../Interface'
+import type { StatusTag as Types } from '../Interface'
 import Styles from './StatusTag.module.scss'
 
-function StatusTag(props: Type) {
+function StatusTag(props: Types): JSX.Element {
   const { title, type } = props
+
   return (
     <div
       className={`

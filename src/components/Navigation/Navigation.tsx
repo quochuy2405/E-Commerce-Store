@@ -1,7 +1,8 @@
 import Styles from '@/components/Navigation/Navigation.module.scss'
 import ListTreeView from '../Constant/ListTreeView'
 import TreeView from '../TreeView'
-function Navigation() {
+
+function Navigation(): JSX.Element {
   return (
     <div className={Styles.Navigation}>
       {ListTreeView?.map((item) => (

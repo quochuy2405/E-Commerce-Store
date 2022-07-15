@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Admin, Layouts, Login, Page404, Test } from './page'
+import { Admin, Layouts, Login, Page404 } from './page'
+
 function App() {
   return (
     <div className="App">
