@@ -39,7 +39,7 @@ function Table(): JSX.Element {
     _limit: 5,
     _start: 1,
     _page: 1,
-    _total: 10
+    _total: 20
   })
 
   //copy information of record to clipboard

@@ -1,11 +1,14 @@
 import React from 'react'
 import Styles from '@/components/BodyTree/DashBoard/DashBoard.module.scss'
+import { ChartBox } from '@/components/HPComponents'
 
 function DashBoard() {
   return (
     <div className={Styles.dashBoard}>
       <div className={Styles.boardChart}>
-        <div className={Styles.mainChart}></div>
+        <div className={Styles.mainChart}>
+          <ChartBox />
+        </div>
         <div className={Styles.earningConversion}>
           <div className={Styles.earning}></div>
           <div className={Styles.conversion}></div>
