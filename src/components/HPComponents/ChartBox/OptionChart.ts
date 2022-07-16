@@ -40,4 +40,5 @@ const optionsLineChart = {
     }
   }
 }
+
 export { optionsBarChart, optionsAreaChart, optionsLineChart }

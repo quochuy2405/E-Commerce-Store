@@ -1,18 +1,20 @@
-import { Doughnut, Line } from 'react-chartjs-2'
-import Styles from './ChartBox.module.scss'
-import React from 'react'
 import {
-  Chart as ChartJS,
   ArcElement,
   BarElement,
   CategoryScale,
+  Chart as ChartJS,
+  Legend,
   LinearScale,
-  PointElement,
   LineElement,
+  PointElement,
   Title,
-  Tooltip,
-  Legend
+  Tooltip
 } from 'chart.js'
+import { useState } from 'react'
+import { Bar, Doughnut, Line } from 'react-chartjs-2'
+import type { Chart, GroupButtonChart } from '../Interface'
+import Styles from './ChartBox.module.scss'
+import { RiPieChartLine, RiLineChartLine, RiBarChartFill } from 'react-icons/ri'
 import { optionsAreaChart, optionsBarChart, optionsLineChart } from './OptionChart'
 
 ChartJS.register(
@@ -26,32 +28,6 @@ ChartJS.register(
   Tooltip,
   Legend
 )
-
-const data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ]
-    }
-  ]
-}
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
 
@@ -73,10 +49,74 @@ const dataLine = {
   ]
 }
 
-function ChartBox(): JSX.Element {
+const buttonsChangeChart: Array<GroupButtonChart> = [
+  {
+    icon: <RiLineChartLine size={20} />,
+    tooltip: '',
+    name: 'line'
+  },
+  {
+    icon: <RiBarChartFill size={20} />,
+    tooltip: '',
+    name: 'bar'
+  },
+
+  {
+    icon: <RiPieChartLine size={20} />,
+    tooltip: '',
+    name: 'dou'
+  }
+]
+function ChartBox(props: Chart): JSX.Element {
+  const { size, type } = props
+  const [currentType, setCurrentType] = useState(type)
+  const renderChartByType = {
+    line: (
+      <Line
+        options={optionsLineChart}
+        data={dataLine}
+        style={{ transform: `scale(${size})` }}
+        className={Styles.chart}
+      />
+    ),
+    bar: (
+      <Bar
+        options={optionsBarChart}
+        data={dataLine}
+        style={{ transform: `scale(${size})` }}
+        className={Styles.chart}
+      />
+    ),
+    dou: (
+      <Doughnut
+        options={optionsBarChart}
+        data={dataLine}
+        style={{ transform: `scale(${size * (3 / 5)})` }}
+        className={Styles.chart}
+      />
+    )
+  }
+
+  const changeChart = (type: 'bar' | 'line' | 'dou') => {
+    setCurrentType(type)
+  }
   return (
-    <div className={Styles.boxChart}>
-      <Doughnut options={optionsAreaChart} data={data} className={Styles.chart} />
+    <div className={Styles.chartCart}>
+      <div className={Styles.groupButtonChart}>
+        {buttonsChangeChart.map((item) => (
+          <div
+            className={`${Styles.btnChange} ${currentType == item.name && Styles.active}`}
+            key={item.name}
+            onClick={() => changeChart(item.name)}
+          >
+            {item.icon}
+          </div>
+        ))}
+      </div>
+      <div className={Styles.titleChart}>
+        <p>Name</p>
+      </div>
+      <div className={Styles.boxChart}>{renderChartByType[currentType]}</div>
     </div>
   )
 }

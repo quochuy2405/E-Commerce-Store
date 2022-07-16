@@ -1,3 +1,5 @@
+import type React from 'react'
+
 interface Input {
   value: string
   handelChange: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -24,5 +26,15 @@ interface Icon {
   image: string
   size: number
 }
+interface Chart {
+  data?: Array<number>
+  type: 'bar' | 'line' | 'dou'
+  size: number
+}
 
-export type { Input, Button, StatusTag, Icon }
+interface GroupButtonChart {
+  icon: React.ReactElement
+  tooltip: string
+  name: 'bar' | 'line' | 'dou'
+}
+export type { Input, Button, StatusTag, Icon, Chart, GroupButtonChart }
