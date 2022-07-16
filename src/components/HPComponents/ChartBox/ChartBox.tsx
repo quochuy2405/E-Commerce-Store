@@ -11,11 +11,11 @@ import {
   Tooltip
 } from 'chart.js'
 import { useState } from 'react'
-import { Bar, Doughnut, Line } from 'react-chartjs-2'
+import { Bar, Line, Pie } from 'react-chartjs-2'
+import { RiBarChartFill, RiLineChartLine, RiPieChartLine } from 'react-icons/ri'
 import type { Chart, GroupButtonChart } from '../Interface'
 import Styles from './ChartBox.module.scss'
-import { RiPieChartLine, RiLineChartLine, RiBarChartFill } from 'react-icons/ri'
-import { optionsAreaChart, optionsBarChart, optionsLineChart } from './OptionChart'
+import { optionsBarChart, optionsLineChart } from './OptionChart'
 
 ChartJS.register(
   CategoryScale,
@@ -70,6 +70,7 @@ const buttonsChangeChart: Array<GroupButtonChart> = [
 function ChartBox(props: Chart): JSX.Element {
   const { size, type } = props
   const [currentType, setCurrentType] = useState(type)
+
   const renderChartByType = {
     line: (
       <Line
@@ -88,7 +89,7 @@ function ChartBox(props: Chart): JSX.Element {
       />
     ),
     dou: (
-      <Doughnut
+      <Pie
         options={optionsBarChart}
         data={dataLine}
         style={{ transform: `scale(${size * (3 / 5)})` }}
@@ -97,9 +98,11 @@ function ChartBox(props: Chart): JSX.Element {
     )
   }
 
+  // set type chart to render another chart
   const changeChart = (type: 'bar' | 'line' | 'dou') => {
     setCurrentType(type)
   }
+
   return (
     <div className={Styles.chartCart}>
       <div className={Styles.groupButtonChart}>
