@@ -13,7 +13,7 @@ import {
   Tooltip,
   Legend
 } from 'chart.js'
-import { optionsAreaChart, optionsBarChart, optionsLineChart } from './Option'
+import { optionsAreaChart, optionsBarChart, optionsLineChart } from './OptionChart'
 
 ChartJS.register(
   CategoryScale,
@@ -54,6 +54,7 @@ const data = {
 }
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+
 const dataLine = {
   labels,
   datasets: [
