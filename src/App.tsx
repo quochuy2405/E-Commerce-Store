@@ -6,8 +6,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Layouts />}>
-          <Route path="/" element={<Test />} />
-          <Route path="/login" element={<Login />} />
+          <Route index element={<Login />} />
+          <Route path="/test" element={<Test />} />
           <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="/admin/:slug" element={<Admin />} />
           <Route path="/admin/:slug/:opt" element={<Admin />} />
