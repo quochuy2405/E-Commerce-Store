@@ -233,9 +233,7 @@ function AddProduct(): JSX.Element {
               isRequired={true}
             />
           </div>
-          <div className={Styles.dropImage}>
-            <DropFile />
-          </div>
+          <div className={Styles.dropImage}>{/* <DropFile /> */}</div>
         </div>
       </div>
     </div>
