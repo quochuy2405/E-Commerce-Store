@@ -2,6 +2,7 @@
 import { Button, Input } from '@/components/HPComponents'
 import Styles from '@/styles/page/Login.module.scss'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import loginImage from '/image/login.svg'
 import logo from '/image/logo.png'
 
@@ -58,7 +59,9 @@ function Login(): JSX.Element {
           <div className={Styles.forgotPasss}>Quên mật khẩu</div>
         </div>
         <div className={Styles.btnLogin}>
-          <Button name="Đăng nhập" width="100%" height="40px" />
+          <Link to="admin">
+            <Button name="Đăng nhập" width="100%" height="40px" />
+          </Link>
         </div>
       </div>
       <div className={Styles.imgLogin}>
