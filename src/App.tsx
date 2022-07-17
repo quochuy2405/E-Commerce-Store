@@ -5,10 +5,10 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route index element={<Login />} />
         <Route path="/" element={<Layouts />}>
-          <Route index element={<Login />} />
-          <Route path="/test" element={<Test />} />
-          <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+          <Route index element={<Navigate to="/admin/dashboard" replace />} />
+          <Route path="/admin/test" element={<Test />} />
           <Route path="/admin/:slug" element={<Admin />} />
           <Route path="/admin/:slug/:opt" element={<Admin />} />
           <Route path="/admin/:slug/:opt/:action" element={<Admin />} />
