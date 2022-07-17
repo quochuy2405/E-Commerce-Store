@@ -11,6 +11,7 @@ function App() {
           <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="/admin/:slug" element={<Admin />} />
           <Route path="/admin/:slug/:opt" element={<Admin />} />
+          <Route path="/admin/:slug/:opt/:action" element={<Admin />} />
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>

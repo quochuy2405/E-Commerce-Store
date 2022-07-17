@@ -1,7 +1,7 @@
 import { MdOutlineAccountBox, MdOutlineAssignment, MdOutlineDashboard } from 'react-icons/md'
 import { DashBoard, User as BodyUser } from '../BodyTree'
 import type { TreeView } from '../Interface'
-import { Hello, Home, User } from './ListTreeItemKey'
+import { Hello, Home, Products, User } from './ListTreeItemKey'
 
 // list review will be render main tag for each object
 const ListTreeView: Array<TreeView> = [
@@ -16,12 +16,12 @@ const ListTreeView: Array<TreeView> = [
     body: <DashBoard />
   },
   {
-    link: '/admin/user',
-    treeKey: 'user',
-    sizeItem: User?.length,
-    titleTree: 'User',
-    nameTree: 'User',
-    itemLinks: User,
+    link: '/admin/product',
+    treeKey: 'product',
+    sizeItem: Products?.length,
+    titleTree: 'Products',
+    nameTree: 'Products',
+    itemLinks: Products,
     icon: <MdOutlineAccountBox size={18} />,
     body: <BodyUser />
   },

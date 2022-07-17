@@ -22,4 +22,12 @@ interface TreeItemSwitch {
   opt: string
   body?: React.ReactElement
 }
-export type { TreeView, TreeItem, KeyNameTree, TreeItemSwitch }
+
+interface TreeItemAction {
+  parentURL: string
+  opt: string
+  action: string
+  body?: React.ReactElement
+}
+
+export type { TreeView, TreeItem, KeyNameTree, TreeItemSwitch, TreeItemAction }

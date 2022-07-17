@@ -7,7 +7,7 @@ function Navigation(): JSX.Element {
     <div className={Styles.Navigation}>
       {ListTreeView?.map((item) => (
         <TreeView
-          key={item.link + item.nameTree}
+          key={item.link + item.nameTree + item.titleTree}
           link={item?.link}
           treeKey={item?.treeKey}
           sizeItem={item?.sizeItem}

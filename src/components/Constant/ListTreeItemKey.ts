@@ -24,6 +24,21 @@ const User: Array<KeyNameTree> = [
     key: '3'
   }
 ]
+
+const Products: Array<KeyNameTree> = [
+  {
+    name: 'Add Product',
+    key: '1'
+  },
+  {
+    name: 'Oke',
+    key: '2'
+  },
+  {
+    name: 'Oke',
+    key: '3'
+  }
+]
 const Hello: Array<KeyNameTree> = [
   {
     name: 'Overview',
@@ -38,4 +53,4 @@ const Hello: Array<KeyNameTree> = [
     key: '3'
   }
 ]
-export { Home, User, Hello }
+export { Home, User, Hello, Products }

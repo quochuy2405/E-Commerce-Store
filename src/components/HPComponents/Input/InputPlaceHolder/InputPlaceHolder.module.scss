@@ -1,0 +1,32 @@
+.inputField {
+  padding: 0;
+  border-radius: 3px;
+  border: 1px solid var(--color-main);
+  display: flex;
+  align-items: center;
+  background-color: white;
+  margin: 4px 0;
+  & legend {
+    margin: 0 10px;
+    font-size: 0.8rem;
+    line-height: normal;
+    opacity: 0.8;
+    font-weight: 300;
+  }
+  & input {
+    width: 100%;
+    border-radius: inherit;
+    padding: 2px 5px 7px 10px;
+  }
+}
+.invalid {
+  font-size: 0.7rem;
+  color: rgb(255, 43, 43);
+  position: absolute;
+  bottom: -15px;
+}
+.inputBox {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+}

@@ -8,6 +8,18 @@ interface Input {
   title?: string
   invalid?: boolean
   textInvalid?: string
+  isRequired?: boolean
+}
+
+interface TextArea {
+  value: string
+  handelChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
+  name?: string
+  title?: string
+  invalid?: boolean
+  textInvalid?: string
+  isRequired?: boolean
+  row?: number
 }
 
 interface Button {
@@ -37,4 +49,4 @@ interface GroupButtonChart {
   tooltip: string
   name: 'bar' | 'line' | 'dou'
 }
-export type { Input, Button, StatusTag, Icon, Chart, GroupButtonChart }
+export type { Input, Button, StatusTag, Icon, Chart, GroupButtonChart, TextArea }

@@ -24,8 +24,8 @@ function TreeItem(props: ModelItem): JSX.Element {
 
 function TreeView(props: Model): JSX.Element {
   const { link, treeKey, sizeItem, titleTree, nameTree, itemLinks, icon } = props
-  const [openTreeItem, setOpenTreeItem] = useState(false)
   const { slug } = useParams()
+  const [openTreeItem, setOpenTreeItem] = useState(slug === treeKey || false)
 
   // set max height for each object of tree view
   document.documentElement.style.setProperty('--max-HeightListTree', `${sizeItem * 40}px`)

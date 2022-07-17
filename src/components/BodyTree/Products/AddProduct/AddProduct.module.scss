@@ -1,0 +1,133 @@
+@use '../../../HPComponents/layouts/common' as *;
+
+.addProduct {
+  @include paperBlank;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+
+  padding: 30px 100px;
+  display: flex;
+  justify-items: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-main);
+  height: 50px;
+  width: 100%;
+  text-align: center;
+}
+.formInput {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.groupTypeText {
+  flex: 1;
+
+  width: 100%;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.groupTypeSpeacial {
+  flex: 1.5;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 0 80px;
+}
+.PriceQuantity {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.selectSize,
+.selectColor {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  gap: 10px;
+  flex-direction: column;
+}
+.boxSelect {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+}
+
+.chooseDiscount {
+  width: 100%;
+}
+.dropImage {
+  width: 100%;
+}
+.titleInput {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.sizeItem {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px var(--color-gray);
+  text-align: center;
+
+  line-height: 30px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  &.active {
+    background-color: var(--color-main);
+    box-shadow: 0 0 0 1px var(--color-main);
+    color: white;
+  }
+}
+
+.boxColor {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.colors {
+  width: 20px;
+  height: 20px;
+
+  border-radius: 100rem;
+  box-shadow: 0 0 0 1px var(--color-gray);
+  text-align: center;
+
+  line-height: 30px;
+  font-weight: 500;
+  font-size: 0.9rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+}
