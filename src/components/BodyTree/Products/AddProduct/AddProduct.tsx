@@ -1,7 +1,9 @@
+import DropFile from '@/components/DropFile'
 import { InputAbove } from '@/components/HPComponents/Input'
 import { TextAreaAbove } from '@/components/HPComponents/TextArea'
 import type { Product } from '@/types'
 import { useCallback, useState } from 'react'
+
 import { BsCheck, BsPlusLg } from 'react-icons/bs'
 import Styles from './AddProduct.module.scss'
 
@@ -232,20 +234,7 @@ function AddProduct(): JSX.Element {
             />
           </div>
           <div className={Styles.dropImage}>
-            <TextAreaAbove
-              value={product.Description}
-              name="Description"
-              textInvalid=""
-              key="Description"
-              title="Description"
-              handelChange={(e) => {
-                onChangeData(e)
-              }}
-              invalid={false}
-              isRequired={true}
-              row={8}
-            />
-            {/* <Dropzone /> */}
+            <DropFile />
           </div>
         </div>
       </div>
