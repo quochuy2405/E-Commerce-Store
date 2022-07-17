@@ -14,8 +14,6 @@ const Layout = ({ input, previews, dropzoneProps, files, extra: { maxFiles } }: 
 }
 
 const DropFile = () => {
-  const [file, setFile] = useState()
-
   const getUploadParams: IDropzoneProps['getUploadParams'] = () => ({
     url: 'https://httpbin.org/post'
   })
