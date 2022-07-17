@@ -128,6 +128,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   cursor: pointer;
   color: white;
+}
+.addColor {
+  width: 20px;
+  height: 20px;
+
+  border-radius: 100rem;
+  box-shadow: 0 0 0 1px var(--color-gray);
+  text-align: center;
+
+  line-height: 30px;
+  font-weight: 500;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: rgb(89, 87, 87);
 }

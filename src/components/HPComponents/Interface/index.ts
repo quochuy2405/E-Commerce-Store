@@ -1,14 +1,24 @@
 import type React from 'react'
 
 interface Input {
+  id?: string
   value: string
   handelChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  type: string
+  type?: string
   name?: string
   title?: string
   invalid?: boolean
   textInvalid?: string
   isRequired?: boolean
+}
+
+interface InputColor {
+  id: string
+  value: string
+  type?: string
+  setColor: (id: string, event: React.ChangeEvent<HTMLInputElement>) => void
+  checkList: string[]
+  className: string
 }
 
 interface TextArea {
@@ -49,4 +59,4 @@ interface GroupButtonChart {
   tooltip: string
   name: 'bar' | 'line' | 'dou'
 }
-export type { Input, Button, StatusTag, Icon, Chart, GroupButtonChart, TextArea }
+export type { Input, Button, StatusTag, Icon, Chart, GroupButtonChart, TextArea, InputColor }

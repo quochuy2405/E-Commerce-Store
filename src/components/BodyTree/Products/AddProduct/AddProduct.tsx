@@ -2,13 +2,13 @@ import { InputAbove } from '@/components/HPComponents/Input'
 import { TextAreaAbove } from '@/components/HPComponents/TextArea'
 import type { Product } from '@/types'
 import { useCallback, useState } from 'react'
-import { BsCheck } from 'react-icons/bs'
+import { BsCheck, BsPlusLg } from 'react-icons/bs'
 import Styles from './AddProduct.module.scss'
 
 const sizesByText = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL', '4XL']
-const colors = ['#E65E75', '#165BAA']
 
 function AddProduct(): JSX.Element {
+  const [file, setFile] = useState<File>()
   const [product, setProduct] = useState<Product>({
     Name: '',
     Category: '',
@@ -21,6 +21,10 @@ function AddProduct(): JSX.Element {
     DiscountId: '',
     PhotoURL: ''
   })
+  const [colors, setColors] = useState([
+    { id: '1', color: '#E65E75' },
+    { id: '2', color: '#165BAA' }
+  ])
 
   // set array size
   const setSize = useCallback(
@@ -38,8 +42,8 @@ function AddProduct(): JSX.Element {
     [product.Size]
   )
 
-  // set array color
-  const setColor = useCallback(
+  // set check color
+  const setCheckColor = useCallback(
     (color: string) => {
       if (product.Color.includes(color)) {
         setProduct({
@@ -56,11 +60,30 @@ function AddProduct(): JSX.Element {
 
   // set data form on change
   const onChangeData = (
-    e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
-    setProduct({ ...product, [e.target.name]: e.target.value })
+    setProduct({ ...product, [event.target.name]: event.target.value })
   }
 
+  // add new color
+  const addColor = (color: string) => {
+    if (!colors.find((e) => e.color === color)) {
+      setColors([...colors, { id: Date.now().toString(), color: color }])
+    }
+  }
+
+  // on change color by id
+  const handelOnChangeColor = (id: string, event: React.ChangeEvent<HTMLInputElement>) => {
+    const arrayColors = colors
+    const index = arrayColors.findIndex((e) => e.id === id)
+    arrayColors[index].color = event.target.value
+    setColors([...arrayColors])
+  }
+
+  // drop image into input file
+  const handleChange = (file: File) => {
+    setFile(file)
+  }
   return (
     <div className={Styles.addProduct}>
       <div className={Styles.title}>
@@ -169,15 +192,28 @@ function AddProduct(): JSX.Element {
             <p className={Styles.titleInput}>Select color</p>
             <div className={Styles.boxColor}>
               {colors.map((item) => (
-                <div
-                  key={item}
-                  className={Styles.colors}
-                  onClick={() => setColor(item)}
-                  style={{ backgroundColor: item }}
-                >
-                  {product.Color.includes(item) && <BsCheck size={18} />}
+                <div key={item?.id}>
+                  <label
+                    className={Styles.colors}
+                    onClick={() => setCheckColor(item?.color)}
+                    style={{ backgroundColor: item?.color }}
+                    htmlFor={item?.id}
+                  >
+                    {product.Color.includes(item?.color) && <BsCheck size={18} />}
+                  </label>
+                  <input
+                    type="color"
+                    id={item?.id}
+                    style={{ display: 'none' }}
+                    onChange={(e) => handelOnChangeColor(item?.id, e)}
+                  />
                 </div>
               ))}
+              <div className={Styles.addColor} onClick={() => addColor('#000000')}>
+                <label htmlFor="colorchoose">
+                  <BsPlusLg size={12} />
+                </label>
+              </div>
             </div>
           </div>
           <div className={Styles.chooseDiscount}>
@@ -209,6 +245,7 @@ function AddProduct(): JSX.Element {
               isRequired={true}
               row={8}
             />
+            {/* <Dropzone /> */}
           </div>
         </div>
       </div>

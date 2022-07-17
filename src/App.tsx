@@ -7,7 +7,7 @@ function App() {
       <Routes>
         <Route index element={<Login />} />
         <Route path="/" element={<Layouts />}>
-          <Route index element={<Navigate to="/admin/dashboard" replace />} />
+          <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="/admin/test" element={<Test />} />
           <Route path="/admin/:slug" element={<Admin />} />
           <Route path="/admin/:slug/:opt" element={<Admin />} />
