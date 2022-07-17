@@ -18,9 +18,9 @@ const DropFile = () => {
     url: 'https://httpbin.org/post'
   })
 
-  const handleSubmit: IDropzoneProps['onSubmit'] = (files, allFiles) => {
-    allFiles.forEach((f) => f.remove())
-  }
+  // const handleSubmit: IDropzoneProps['onSubmit'] = (files, allFiles) => {
+  //   allFiles.forEach((f) => f.remove())
+  // }
 
   return (
     <div className={Styles.dropFile}>
