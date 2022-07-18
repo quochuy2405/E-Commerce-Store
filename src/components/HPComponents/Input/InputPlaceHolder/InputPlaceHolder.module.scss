@@ -6,6 +6,7 @@
   align-items: center;
   background-color: white;
   margin: 4px 0;
+
   & legend {
     margin: 0 10px;
     font-size: 0.8rem;
@@ -16,7 +17,7 @@
   & input {
     width: 100%;
     border-radius: inherit;
-    padding: 2px 5px 7px 10px;
+    padding: 8px 10px;
   }
 }
 .invalid {

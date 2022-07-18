@@ -3,7 +3,7 @@ import { InputAbove } from '@/components/HPComponents/Input'
 import { TextAreaAbove } from '@/components/HPComponents/TextArea'
 import type { FileView } from '@/components/Interface'
 import type { Product } from '@/types'
-import { useCallback, useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 
 import { BsCheck, BsPlusLg } from 'react-icons/bs'
 import Styles from './AddProduct.module.scss'
@@ -30,36 +30,28 @@ function AddProduct(): JSX.Element {
   ])
 
   // set array size
-  const setSize = useCallback(
-    (size: string) => {
-      if (product.Size.includes(size)) {
-        setProduct({
-          ...product,
-          Size: [...product.Size.filter((item) => item !== size)]
-        })
-      } else {
-        setProduct({ ...product, Size: [...product.Size, size] })
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [product.Size]
-  )
+  const setSize = (size: string) => {
+    if (product.Size.includes(size)) {
+      setProduct({
+        ...product,
+        Size: [...product.Size.filter((item) => item !== size)]
+      })
+    } else {
+      setProduct({ ...product, Size: [...product.Size, size] })
+    }
+  }
 
   // set check color
-  const setCheckColor = useCallback(
-    (color: string) => {
-      if (product.Color.includes(color)) {
-        setProduct({
-          ...product,
-          Color: [...product.Color.filter((item) => item !== color)]
-        })
-      } else {
-        setProduct({ ...product, Color: [...product.Color, color] })
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [product.Color]
-  )
+  const setCheckColor = (color: string) => {
+    if (product.Color.includes(color)) {
+      setProduct({
+        ...product,
+        Color: [...product.Color.filter((item) => item !== color)]
+      })
+    } else {
+      setProduct({ ...product, Color: [...product.Color, color] })
+    }
+  }
 
   // set data form on change
   const onChangeData = (
@@ -193,7 +185,7 @@ function AddProduct(): JSX.Element {
             <p className={Styles.titleInput}>Select color</p>
             <div className={Styles.boxColor}>
               {colors.map((item) => (
-                <div key={item?.id}>
+                <div key={item?.id} className={Styles.itemColor}>
                   <label
                     className={Styles.colors}
                     onClick={() => setCheckColor(item?.color)}
@@ -219,12 +211,12 @@ function AddProduct(): JSX.Element {
           </div>
           <div className={Styles.chooseDiscount}>
             <InputAbove
-              value={product.Quantity}
+              value={product.DiscountId}
               type="text"
-              name="Quantity"
+              name="DiscountId"
               textInvalid=""
-              key="Quantity"
-              title="Quantity"
+              key="DiscountId"
+              title="Discount"
               handelChange={(e) => {
                 onChangeData(e)
               }}
@@ -237,8 +229,17 @@ function AddProduct(): JSX.Element {
           </div>
         </div>
       </div>
+      <div className={Styles.groupBtn}>
+        <div className={Styles.btnAdd}>
+          <BsPlusLg size={10} />
+          <p>Add</p>
+        </div>
+        <div className={Styles.btnCancel}>
+          <p>Cancel</p>
+        </div>
+      </div>
     </div>
   )
 }
 
-export default AddProduct
+export default memo(AddProduct)

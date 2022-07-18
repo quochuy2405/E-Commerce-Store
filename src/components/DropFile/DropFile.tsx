@@ -2,18 +2,18 @@
 import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { RiCloseCircleFill } from 'react-icons/ri'
+import { BsImages } from 'react-icons/bs'
 import Styles from '@/components/DropFile/DropFile.module.scss'
 import type { DropFile as Types, FileView } from '../Interface'
 import { toast, ToastContainer } from 'react-toastify'
 
 function DropFile(props: Types) {
   const { fileImage, setFileImage, size } = props
-  const filesCurent = useRef<Array<FileView>>([])
 
   // set up drop
-  const onDrop = useCallback((acceptedFiles: File[]) => {
+  const onDrop = (acceptedFiles: File[]) => {
     showImageCover(acceptedFiles)
-  }, [])
+  }
   const { getInputProps, getRootProps } = useDropzone({
     onDrop,
     multiple: true
@@ -26,22 +26,19 @@ function DropFile(props: Types) {
       if (file) {
         const fileType = file['type']
         const validImageTypes = ['image/gif', 'image/jpeg', 'image/png']
-        if (!validImageTypes.includes(fileType) || size <= filesCurent.current.length) {
-          if (size <= filesCurent.current.length) {
+        if (!validImageTypes.includes(fileType) || size <= fileImage.length) {
+          if (size <= fileImage.length) {
             toast.warning('Hết cỡ rồi bà nội =))')
             toast.clearWaitingQueue()
           } else {
-            toast.success('Sai định dạng gòi bà =))')
+            toast.error('Sai định dạng gòi bà =))')
             toast.clearWaitingQueue()
           }
         } else {
           if (file) {
             const preview = URL.createObjectURL(file)
             const path = file.name
-            let files = filesCurent.current
-            files = [...files, { preview, path, id: Date.now().toString() }]
-            filesCurent.current = files
-            setFileImage(filesCurent.current)
+            setFileImage([...fileImage, { preview, path, id: Date.now().toString() }])
           }
         }
       }
@@ -50,27 +47,30 @@ function DropFile(props: Types) {
 
   // delete image view
   const deleteImage = (id: string) => {
-    filesCurent.current = filesCurent.current.filter((e) => e.id !== id)
-    setFileImage(filesCurent.current)
+    setFileImage(fileImage.filter((e) => e.id !== id))
   }
 
   return (
-    <>
+    <div className={Styles.DropImage}>
       <ToastContainer limit={1} autoClose={500} hideProgressBar pauseOnFocusLoss={false} />
-      <div {...getRootProps()} className={Styles.DropImage}>
-        <input {...getInputProps()} alt="" />
-
-        {!fileImage.length && <b>Kéo thả hoặc chọn {size} ảnh</b>}
-        <div className={Styles.viewImage}>
-          {fileImage.map((item) => (
-            <div key={item?.preview} className={Styles.Image}>
-              <RiCloseCircleFill className={Styles.close} onClick={() => deleteImage(item?.id)} />
-              <img src={item?.preview} alt={item?.path} />
-            </div>
-          ))}
-        </div>
+      <div className={Styles.viewImage}>
+        {fileImage.map((item) => (
+          <div key={item?.preview} className={Styles.Image}>
+            <RiCloseCircleFill className={Styles.close} onClick={() => deleteImage(item?.id)} />
+            <img src={item?.preview} alt={item?.path} />
+          </div>
+        ))}
       </div>
-    </>
+      <div {...getRootProps()} className={Styles.DropIn}>
+        <input {...getInputProps()} alt="input" id="inputDrop" />
+
+        <BsImages size={40} />
+        <b>Kéo thả hoặc chọn {size} ảnh</b>
+      </div>
+      <label htmlFor="inputDrop" className={Styles.buttonOpenFile}>
+        Open file Brower
+      </label>
+    </div>
   )
 }
 export default memo(DropFile)

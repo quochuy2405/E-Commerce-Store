@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { Button, Input } from '@/components/HPComponents'
+import { Button } from '@/components/HPComponents'
+import { InputPlaceHolder } from '@/components/HPComponents/Input'
 import Styles from '@/styles/page/Login.module.scss'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -32,7 +33,7 @@ function Login(): JSX.Element {
         </div>
         <div className={Styles.title}>Đăng nhập</div>
         <div className={Styles.inputForm}>
-          <Input
+          <InputPlaceHolder
             value={dataForm.userName}
             handelChange={handleOnChange}
             type="text"
@@ -41,7 +42,7 @@ function Login(): JSX.Element {
             title="Tên đăng nhập"
             name="userName"
           />
-          <Input
+          <InputPlaceHolder
             value={dataForm.password}
             handelChange={handleOnChange}
             type="password"
