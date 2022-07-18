@@ -1,3 +1,5 @@
+import type React from 'react'
+
 interface KeyNameTree {
   name: string
   key: string
@@ -29,5 +31,15 @@ interface TreeItemAction {
   action: string
   body?: React.ReactElement
 }
+interface FileView {
+  id: string
+  path: string
+  preview: string
+}
+interface DropFile {
+  size: number
+  fileImage: FileView[]
+  setFileImage: React.Dispatch<React.SetStateAction<FileView[]>>
+}
 
-export type { TreeView, TreeItem, KeyNameTree, TreeItemSwitch, TreeItemAction }
+export type { TreeView, TreeItem, KeyNameTree, TreeItemSwitch, TreeItemAction, DropFile, FileView }

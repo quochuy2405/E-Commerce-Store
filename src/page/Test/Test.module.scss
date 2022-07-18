@@ -1,6 +1,6 @@
 @use '../../components/HPComponents/layouts/common' as *;
 .testType {
   @include paperBlank;
-  width: 200px;
-  height: 200px;
+  width: 100vw;
+  height: 100vh;
 }

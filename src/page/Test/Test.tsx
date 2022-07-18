@@ -1,3 +1,4 @@
+import { DropFile } from '@/components'
 import { Dialog } from '@/components/HPComponents'
 import Styles from '@/page/Test/Test.module.scss'
 import { setUser } from '@/redux/features/userSlice'
@@ -20,8 +21,9 @@ function Test() {
   }, [user])
   return (
     <div className={Styles.testType}>
-      <button onClick={() => setUserAccount()}> set user</button>
-      <Dialog />
+      {/* <button onClick={() => setUserAccount()}> set user</button>
+      <Dialog /> */}
+      <DropFile />
     </div>
   )
 }

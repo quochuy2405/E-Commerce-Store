@@ -1,6 +1,7 @@
 import DropFile from '@/components/DropFile'
 import { InputAbove } from '@/components/HPComponents/Input'
 import { TextAreaAbove } from '@/components/HPComponents/TextArea'
+import type { FileView } from '@/components/Interface'
 import type { Product } from '@/types'
 import { useCallback, useState } from 'react'
 
@@ -10,7 +11,7 @@ import Styles from './AddProduct.module.scss'
 const sizesByText = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL', '4XL']
 
 function AddProduct(): JSX.Element {
-  const [file, setFile] = useState<File>()
+  const [fileImage, setFileImage] = useState<Array<FileView>>([])
   const [product, setProduct] = useState<Product>({
     Name: '',
     Category: '',
@@ -83,9 +84,7 @@ function AddProduct(): JSX.Element {
   }
 
   // drop image into input file
-  const handleChange = (file: File) => {
-    setFile(file)
-  }
+
   return (
     <div className={Styles.addProduct}>
       <div className={Styles.title}>
@@ -233,7 +232,9 @@ function AddProduct(): JSX.Element {
               isRequired={true}
             />
           </div>
-          <div className={Styles.dropImage}>{/* <DropFile /> */}</div>
+          <div className={Styles.dropImage}>
+            <DropFile fileImage={fileImage} setFileImage={setFileImage} size={4} />
+          </div>
         </div>
       </div>
     </div>
