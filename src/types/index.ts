@@ -2,6 +2,7 @@ export interface Product {
   Name: string
   Category: string
   Brand: string
+  Gender: string
   Description: string
   Price: string
   Quantity: string

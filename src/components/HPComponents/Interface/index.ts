@@ -1,5 +1,13 @@
 import type React from 'react'
 
+interface KeyValue {
+  key: string
+  value: string | number | readonly string[] | undefined
+}
+interface SelectKey {
+  value: string
+  label: string | number | readonly string[] | undefined
+}
 interface Input {
   id?: string
   value: string
@@ -10,8 +18,21 @@ interface Input {
   invalid?: boolean
   textInvalid?: string
   isRequired?: boolean
+  className?: string | unknown
 }
 
+interface Select {
+  id?: string
+  value: string
+  handelChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  data?: Array<SelectKey>
+  name?: string
+  title?: string
+  invalid?: boolean
+  textInvalid?: string
+  isRequired?: boolean
+  className?: string | unknown
+}
 interface InputColor {
   id: string
   value: string
@@ -60,4 +81,14 @@ interface GroupButtonChart {
   name: 'bar' | 'line' | 'dou'
 }
 
-export type { Input, Button, StatusTag, Icon, Chart, GroupButtonChart, TextArea, InputColor }
+export type {
+  Input,
+  Button,
+  StatusTag,
+  Icon,
+  Chart,
+  GroupButtonChart,
+  TextArea,
+  InputColor,
+  Select
+}

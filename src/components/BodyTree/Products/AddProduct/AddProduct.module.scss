@@ -7,6 +7,7 @@
   border-radius: 4px;
 
   padding: 10px 100px;
+  padding-top: 100px;
   display: flex;
   justify-items: flex-start;
   align-items: center;
@@ -20,14 +21,7 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
 }
-.title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-main);
-  height: 50px;
-  width: 100%;
-  text-align: center;
-}
+
 .formInput {
   width: 100%;
   flex: 1;
@@ -46,7 +40,7 @@
   justify-content: space-between;
 }
 .groupTypeSpeacial {
-  flex: 1.5;
+  flex: 1;
   display: flex;
   height: 100%;
   align-items: center;
@@ -162,6 +156,7 @@
   }
 }
 .groupBtn {
+  width: 100%;
   display: flex;
   align-self: flex-start;
   gap: 20px;
@@ -179,7 +174,7 @@
   color: white;
   border-radius: 4px;
 
-  min-width: 150px;
+  flex: 1;
   transition: all linear 0.2s;
   &:hover {
     transition: all linear 0.2s;
@@ -203,11 +198,25 @@
   font-weight: 600;
   color: var(--color-main);
   border-radius: 4px;
-  min-width: 150px;
+  flex: 1;
   transition: all linear 0.2s;
   &:hover {
     transition: all linear 0.2s;
     background-color: var(--color-main);
     color: white;
+  }
+}
+
+.Category_Gender {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  .Category {
+    flex: 2;
+  }
+  .Gender {
+    flex: 1;
   }
 }

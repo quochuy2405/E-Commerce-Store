@@ -1,14 +1,25 @@
 import DropFile from '@/components/DropFile'
 import { InputAbove } from '@/components/HPComponents/Input'
+import { SelectAbove } from '@/components/HPComponents/Select'
 import { TextAreaAbove } from '@/components/HPComponents/TextArea'
 import type { FileView } from '@/components/Interface'
 import type { Product } from '@/types'
-import { memo, useCallback, useState } from 'react'
+import { memo, useState } from 'react'
 
 import { BsCheck, BsPlusLg } from 'react-icons/bs'
+import Select from 'react-select'
 import Styles from './AddProduct.module.scss'
 
-const sizesByText = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL', '4XL']
+const sizesByText = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
 
 function AddProduct(): JSX.Element {
   const [fileImage, setFileImage] = useState<Array<FileView>>([])
@@ -16,6 +27,7 @@ function AddProduct(): JSX.Element {
     Name: '',
     Category: '',
     Brand: '',
+    Gender: '',
     Description: '',
     Price: '',
     Quantity: '',
@@ -28,18 +40,6 @@ function AddProduct(): JSX.Element {
     { id: '1', color: '#E65E75' },
     { id: '2', color: '#165BAA' }
   ])
-
-  // set array size
-  const setSize = (size: string) => {
-    if (product.Size.includes(size)) {
-      setProduct({
-        ...product,
-        Size: [...product.Size.filter((item) => item !== size)]
-      })
-    } else {
-      setProduct({ ...product, Size: [...product.Size, size] })
-    }
-  }
 
   // set check color
   const setCheckColor = (color: string) => {
@@ -55,7 +55,10 @@ function AddProduct(): JSX.Element {
 
   // set data form on change
   const onChangeData = (
-    event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    event:
+      | React.ChangeEvent<HTMLSelectElement>
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setProduct({ ...product, [event.target.name]: event.target.value })
   }
@@ -79,9 +82,6 @@ function AddProduct(): JSX.Element {
 
   return (
     <div className={Styles.addProduct}>
-      <div className={Styles.title}>
-        <p>Add Product</p>
-      </div>
       <div className={Styles.formInput}>
         <div className={Styles.groupTypeText}>
           <InputAbove
@@ -97,19 +97,11 @@ function AddProduct(): JSX.Element {
             invalid={false}
             isRequired={true}
           />
-          <InputAbove
-            value={product.Category}
-            type="text"
-            name="Category"
-            textInvalid=""
-            key="Category"
-            title="Category"
-            handelChange={(e) => {
-              onChangeData(e)
-            }}
-            invalid={false}
-            isRequired={true}
-          />
+          <div className={Styles.Category_Gender}>
+            <Select options={options} className={Styles.Category} />
+            <Select options={options} className={Styles.Gender} />
+          </div>
+
           <InputAbove
             value={product.Brand}
             type="text"
@@ -168,18 +160,14 @@ function AddProduct(): JSX.Element {
           </div>
 
           <div className={Styles.selectSize}>
-            <p className={Styles.titleInput}>Select size</p>
-            <div className={Styles.boxSelect}>
-              {sizesByText?.map((item) => (
-                <div
-                  key={item}
-                  className={`${Styles.sizeItem} ${product.Size.includes(item) && Styles.active}`}
-                  onClick={() => setSize(item)}
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
+            <SelectAbove
+              value="2"
+              handelChange={() => {
+                console.log('')
+              }}
+              title="Select size"
+              data={sizesByText}
+            />
           </div>
           <div className={Styles.selectColor}>
             <p className={Styles.titleInput}>Select color</p>
@@ -209,33 +197,19 @@ function AddProduct(): JSX.Element {
               </div>
             </div>
           </div>
-          <div className={Styles.chooseDiscount}>
-            <InputAbove
-              value={product.DiscountId}
-              type="text"
-              name="DiscountId"
-              textInvalid=""
-              key="DiscountId"
-              title="Discount"
-              handelChange={(e) => {
-                onChangeData(e)
-              }}
-              invalid={false}
-              isRequired={true}
-            />
-          </div>
+
           <div className={Styles.dropImage}>
             <DropFile fileImage={fileImage} setFileImage={setFileImage} size={4} />
           </div>
-        </div>
-      </div>
-      <div className={Styles.groupBtn}>
-        <div className={Styles.btnAdd}>
-          <BsPlusLg size={10} />
-          <p>Add</p>
-        </div>
-        <div className={Styles.btnCancel}>
-          <p>Cancel</p>
+          <div className={Styles.groupBtn}>
+            <div className={Styles.btnAdd}>
+              <BsPlusLg size={10} />
+              <p>Add</p>
+            </div>
+            <div className={Styles.btnCancel}>
+              <p>Cancel</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
