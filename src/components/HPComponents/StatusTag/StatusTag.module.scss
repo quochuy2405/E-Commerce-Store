@@ -7,7 +7,12 @@
   align-items: center;
   height: 25px;
   margin: auto;
+
+  text-transform: capitalize;
   border-radius: 100rem;
+  padding: 0 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
   margin: 5px;
 }
 
@@ -21,5 +26,5 @@
 }
 .warning {
   background-color: #ffd365;
-  color: white;
+  color: rgb(53, 53, 53);
 }

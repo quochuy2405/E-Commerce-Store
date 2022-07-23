@@ -15,7 +15,7 @@ function SelectAbove(props: Types): JSX.Element {
               arrow
               placement="right"
               TransitionComponent={Zoom}
-              title={props?.toolTip || ''}
+              title={props?.toolTip || 'a'}
               componentsProps={{
                 arrow: {
                   sx: {

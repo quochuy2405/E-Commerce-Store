@@ -116,3 +116,24 @@
   width: 100%;
   position: relative;
 }
+
+.Bar {
+  @include paperBlank;
+  width: 100%;
+  height: 50px;
+  margin: 10px 0;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  .RouteLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.btnAddVariant {
+  @include button;
+  width: fit-content;
+}

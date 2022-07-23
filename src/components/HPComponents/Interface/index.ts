@@ -1,8 +1,8 @@
 import type React from 'react'
 
 interface KeyValue {
-  key: string
-  value: string | number | readonly string[] | undefined
+  key: string | number | readonly string[] | undefined
+  value: string | number | boolean | readonly string[] | undefined
 }
 interface SelectKey {
   value: string
@@ -96,5 +96,6 @@ export type {
   TextArea,
   InputColor,
   Select,
-  Table
+  Table,
+  KeyValue
 }

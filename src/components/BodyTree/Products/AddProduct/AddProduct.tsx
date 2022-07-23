@@ -1,13 +1,14 @@
 import DropFile from '@/components/DropFile'
-import { Table } from '@/components/HPComponents'
+import { StatusTag, Table } from '@/components/HPComponents'
 import { InputAbove } from '@/components/HPComponents/Input'
 import { SelectAbove } from '@/components/HPComponents/Select'
 import { TextAreaAbove } from '@/components/HPComponents/TextArea'
 import type { FileView } from '@/components/Interface'
 import type { Product } from '@/types'
+import { FcNext } from 'react-icons/fc'
 import { memo, useState } from 'react'
-
 import { BsPlusLg } from 'react-icons/bs'
+import { useParams } from 'react-router-dom'
 import Styles from './AddProduct.module.scss'
 
 const sizesByText = [
@@ -15,13 +16,9 @@ const sizesByText = [
   { value: 'strawberry', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' }
 ]
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
 
 function AddProduct(): JSX.Element {
+  const { slug, opt } = useParams()
   const [fileImages, setFileImages] = useState<Array<FileView>>([])
   const [products, setProducts] = useState<Product[]>([
     {
@@ -62,10 +59,6 @@ function AddProduct(): JSX.Element {
     Quantity: '',
     Size: ''
   })
-  const [colors, setColors] = useState([
-    { id: '1', color: '#E65E75' },
-    { id: '2', color: '#165BAA' }
-  ])
 
   // set data form on change
   const onChangeData = (
@@ -78,101 +71,115 @@ function AddProduct(): JSX.Element {
   }
 
   return (
-    <div className={Styles.addProduct}>
-      <div className={Styles.formInput}>
-        <div className={Styles.groupTypeText}>
-          <div className={Styles.textShort}>
-            <SelectAbove
-              value="002"
-              handelChange={() => {
-                console.log('')
-              }}
-              title="Category"
-              data={sizesByText}
-              isRequired={true}
-              toolTip="Hãy lựa chọn nếu không có sự lựa chọn hãy tạo thêm"
-            />
-            <InputAbove
-              value={product.Name}
-              type="text"
-              name="Name"
-              textInvalid=""
-              key="Name"
-              title="Product Name"
-              handelChange={(e) => {
-                onChangeData(e)
-              }}
-              invalid={false}
-              isRequired={true}
-            />
-            <SelectAbove
-              value="002"
-              handelChange={() => {
-                console.log('')
-              }}
-              title="Brand  "
-              data={sizesByText}
-              isRequired={true}
-            />
-            <SelectAbove
-              value="002"
-              handelChange={() => {
-                console.log('')
-              }}
-              title="Status"
-              data={sizesByText}
-              isRequired={true}
-            />
-            <SelectAbove
-              value="2"
-              handelChange={() => {
-                console.log('')
-              }}
-              title="Select size"
-              data={sizesByText}
-            />
+    <>
+      <div className={Styles.Bar}>
+        <div className={Styles.RouteLink}>
+          <StatusTag title={'admin'} type={'success'} />
+          {slug && <FcNext />}
+          <StatusTag title={slug?.toString() || ''} type={'warning'} />
+          {opt && <FcNext />}
+          <StatusTag title={opt?.toString() || ''} type={'error'} />
+        </div>
+        <div className={Styles.btnAddVariant}>
+          <p>Add Variant</p>
+        </div>
+      </div>
+      <div className={Styles.addProduct}>
+        <div className={Styles.formInput}>
+          <div className={Styles.groupTypeText}>
+            <div className={Styles.textShort}>
+              <SelectAbove
+                value="002"
+                handelChange={() => {
+                  console.log('')
+                }}
+                title="Category"
+                data={sizesByText}
+                isRequired={true}
+                toolTip="Hãy lựa chọn nếu không có sự lựa chọn hãy tạo thêm"
+              />
+              <InputAbove
+                value={product.Name}
+                type="text"
+                name="Name"
+                textInvalid=""
+                key="Name"
+                title="Product Name"
+                handelChange={(e) => {
+                  onChangeData(e)
+                }}
+                invalid={false}
+                isRequired={true}
+              />
+              <SelectAbove
+                value="002"
+                handelChange={() => {
+                  console.log('')
+                }}
+                title="Brand  "
+                data={sizesByText}
+                isRequired={true}
+              />
+              <SelectAbove
+                value="002"
+                handelChange={() => {
+                  console.log('')
+                }}
+                title="Status"
+                data={sizesByText}
+                isRequired={true}
+              />
+              <SelectAbove
+                value="2"
+                handelChange={() => {
+                  console.log('')
+                }}
+                title="Select size"
+                data={sizesByText}
+              />
+            </div>
+            <div className={Styles.Description}>
+              <TextAreaAbove
+                value={product.Description}
+                name="Description"
+                textInvalid=""
+                key="Description"
+                title="Description"
+                handelChange={(e) => {
+                  onChangeData(e)
+                }}
+                invalid={false}
+                isRequired={true}
+                row={12}
+              />
+            </div>
           </div>
-          <div className={Styles.Description}>
-            <TextAreaAbove
-              value={product.Description}
-              name="Description"
-              textInvalid=""
-              key="Description"
-              title="Description"
-              handelChange={(e) => {
-                onChangeData(e)
-              }}
-              invalid={false}
-              isRequired={true}
-              row={10}
-            />
+          <div className={Styles.groupTypeSpeacial}>
+            {Array.from(Array(5).keys()).map((item, index) => (
+              <DropFile
+                key={item.toString()}
+                index={index}
+                fileImages={fileImages}
+                setFileImages={setFileImages}
+                size={5}
+              />
+            ))}
           </div>
         </div>
-        <div className={Styles.groupTypeSpeacial}>
-          {Array.from(Array(5).keys()).map((item, index) => (
-            <DropFile
-              key={item.toString()}
-              index={index}
-              fileImages={fileImages}
-              setFileImages={setFileImages}
-              size={5}
-            />
-          ))}
+        <div className={Styles.tableView}>
+          <Table datas={products} />
+        </div>
+        <div className={Styles.groupBtn}>
+          <div className={Styles.btnAdd}>
+            <BsPlusLg size={10} />
+            <p>Add</p>
+          </div>
+          <div className={Styles.btnCancel}>
+            <p>Cancel</p>
+          </div>
         </div>
       </div>
-      <div className={Styles.tableView}>
-        <Table datas={products} />
-      </div>
-      <div className={Styles.groupBtn}>
-        <div className={Styles.btnAdd}>
-          <BsPlusLg size={10} />
-          <p>Add</p>
-        </div>
-        <div className={Styles.btnCancel}>
-          <p>Cancel</p>
-        </div>
-      </div>
-    </div>
+    </>
   )
 }
 
