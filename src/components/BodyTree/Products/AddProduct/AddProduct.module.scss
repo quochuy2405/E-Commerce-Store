@@ -4,10 +4,11 @@
   @include paperBlank;
   width: 100%;
   height: 100%;
+  overflow: scroll;
   border-radius: 4px;
 
   padding: 10px 100px;
-  padding-top: 100px;
+  padding-top: 50px;
   display: flex;
   justify-items: flex-start;
   align-items: center;
@@ -24,199 +25,94 @@
 
 .formInput {
   width: 100%;
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .groupTypeText {
-  flex: 1;
-
-  width: 100%;
+  width: 90%;
+  gap: 100px;
   display: flex;
-  height: 100%;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
+}
+.textShort {
+  flex: 1;
+}
+.Description {
+  flex: 1;
 }
 .groupTypeSpeacial {
-  flex: 1;
-  display: flex;
-  height: 100%;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-
-  padding: 0 80px;
-}
-.PriceQuantity {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  width: 90%;
+  padding: 20px 0;
+  grid-template-areas:
+    'h1 h1 h2 h4'
+    'h1 h1 h3 h5';
+  grid-template-rows: 200px;
   gap: 20px;
-}
-.selectSize,
-.selectColor {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-  gap: 10px;
-  flex-direction: column;
-}
-.boxSelect {
-  display: flex;
-  width: 60%;
-  justify-content: space-between;
-}
-
-.chooseDiscount {
-  width: 100%;
-}
-.dropImage {
-  width: 100%;
-}
-.titleInput {
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-.sizeItem {
-  width: 30px;
-  height: 30px;
-
-  border-radius: 4px;
-  box-shadow: 0 0 0 1px var(--color-gray);
-  text-align: center;
-
-  line-height: 30px;
-  font-weight: 500;
-  font-size: 0.9rem;
-  cursor: pointer;
-  &.active {
-    background-color: var(--color-main);
-    box-shadow: 0 0 0 1px var(--color-main);
-    color: white;
+  grid-template-columns: 20%;
+  @for $i from 0 through 5 {
+    & > div:nth-child(#{$i}) {
+      grid-area: h +#{$i};
+    }
   }
 }
 
-.boxColor {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-}
-
-.colors {
-  width: 20px;
-  height: 20px;
-
-  border-radius: 100rem;
-  box-shadow: 0 0 0 1px var(--color-gray);
-  text-align: center;
-
-  line-height: 30px;
-  font-weight: 500;
-  font-size: 0.9rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  cursor: pointer;
-  color: white;
-}
-.addColor {
-  width: 20px;
-  height: 20px;
-
-  border-radius: 100rem;
-  box-shadow: 0 0 0 1px var(--color-gray);
-  text-align: center;
-
-  line-height: 30px;
-  font-weight: 500;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: rgb(89, 87, 87);
-}
-.itemColor {
-  position: relative;
-  input {
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    display: block !important;
-    width: 0;
-    height: 0;
-    visibility: hidden;
-  }
-}
 .groupBtn {
-  width: 100%;
-  display: flex;
-  align-self: flex-start;
-  gap: 20px;
-}
-
-.btnAdd {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 20px;
+}
+.btnAdd {
   background-color: var(--color-main);
-  padding: 5px 10px;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 5px 15px;
+
   color: white;
-  border-radius: 4px;
+  text-align: center;
 
-  flex: 1;
-  transition: all linear 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+
+  border-radius: 3px;
+  margin: 10px 0;
+  font-weight: 400;
+  transition: all ease-in 0.2s;
+  cursor: pointer;
+  opacity: 0.9;
   &:hover {
-    transition: all linear 0.2s;
-    border: 2px solid var(--color-main);
-
-    background-color: white;
-    color: var(--color-main);
-    font-size: 0.9rem;
+    transition: all ease-in 0.2s;
+    box-shadow: 0 0 0px 1px var(--color-main);
+    opacity: 1;
   }
 }
 .btnCancel {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  border: 2px solid var(--color-main);
+  box-shadow: 0 0 0px 1px var(--color-main);
+  padding: 5px 15px;
 
-  background-color: white;
-  padding: 5px 10px;
-  font-size: 1rem;
-  font-weight: 600;
   color: var(--color-main);
-  border-radius: 4px;
-  flex: 1;
-  transition: all linear 0.2s;
-  &:hover {
-    transition: all linear 0.2s;
-    background-color: var(--color-main);
-    color: white;
-  }
-}
+  text-align: center;
 
-.Category_Gender {
-  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 10px;
-  .Category {
-    flex: 2;
-  }
-  .Gender {
-    flex: 1;
-  }
+
+  width: 150px;
+
+  border-radius: 3px;
+  margin: 10px 0;
+  font-weight: 400;
+  transition: all ease-in 0.2s;
+}
+.tableView {
+  width: 100%;
+  position: relative;
 }

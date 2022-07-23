@@ -6,8 +6,6 @@ export interface Product {
   Description: string
   Price: string
   Quantity: string
-  Size: Array<string>
-  Color: Array<string>
-  DiscountId: string
-  PhotoURL: string
+  Size: string
+  PhotoURL: string[]
 }

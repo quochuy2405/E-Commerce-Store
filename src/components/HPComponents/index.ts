@@ -1,7 +1,7 @@
 export { default as Button } from './Button'
 export { default as Dialog } from './Dialog'
-export { default as Table } from './Table'
 export { default as Input } from './Input'
 export { default as Icon } from './Icon'
 export { default as StatusTag } from './StatusTag'
 export { default as ChartBox } from './ChartBox'
+export { default as Table } from './Table'

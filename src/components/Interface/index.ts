@@ -37,9 +37,10 @@ interface FileView {
   preview: string
 }
 interface DropFile {
+  index: number
   size: number
-  fileImage: FileView[]
-  setFileImage: React.Dispatch<React.SetStateAction<FileView[]>>
+  fileImages: FileView[]
+  setFileImages: React.Dispatch<React.SetStateAction<FileView[]>>
 }
 
 export type { TreeView, TreeItem, KeyNameTree, TreeItemSwitch, TreeItemAction, DropFile, FileView }

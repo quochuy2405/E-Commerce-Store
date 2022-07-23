@@ -19,6 +19,7 @@ interface Input {
   textInvalid?: string
   isRequired?: boolean
   className?: string | unknown
+  toolTip?: string
 }
 
 interface Select {
@@ -32,6 +33,7 @@ interface Select {
   textInvalid?: string
   isRequired?: boolean
   className?: string | unknown
+  toolTip?: string
 }
 interface InputColor {
   id: string
@@ -53,6 +55,9 @@ interface TextArea {
   row?: number
 }
 
+interface Table {
+  datas?: Array<object>
+}
 interface Button {
   handleOnCick?: () => void
   name?: string
@@ -90,5 +95,6 @@ export type {
   GroupButtonChart,
   TextArea,
   InputColor,
-  Select
+  Select,
+  Table
 }

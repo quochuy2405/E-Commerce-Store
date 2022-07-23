@@ -1,11 +1,11 @@
-import Styles from '@/components/HPComponents/Table/Table.module.scss'
+import Styles from '@/components/HPComponents/Table/TableRevenue/TableRevenue.module.scss'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { TbTableExport } from 'react-icons/tb'
 import { toast, ToastContainer } from 'react-toastify'
 import { memo, useState } from 'react'
 import 'react-toastify/dist/ReactToastify.css'
-import StatusTag from '../StatusTag'
+import StatusTag from '../../StatusTag'
 
 const listTitle = [
   {
@@ -34,7 +34,7 @@ const listTitle = [
   }
 ]
 
-function Table(): JSX.Element {
+function TableRevenue(): JSX.Element {
   const [navigation, setNavigation] = useState({
     _limit: 5,
     _start: 1,
@@ -158,4 +158,4 @@ function Table(): JSX.Element {
   )
 }
 
-export default memo(Table)
+export default memo(TableRevenue)

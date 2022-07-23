@@ -8,7 +8,7 @@ import type { DropFile as Types, FileView } from '../Interface'
 import { toast, ToastContainer } from 'react-toastify'
 
 function DropFile(props: Types) {
-  const { fileImage, setFileImage, size } = props
+  const { fileImages, setFileImages, size, index } = props
 
   // set up drop
   const onDrop = (acceptedFiles: File[]) => {
@@ -26,8 +26,8 @@ function DropFile(props: Types) {
       if (file) {
         const fileType = file['type']
         const validImageTypes = ['image/gif', 'image/jpeg', 'image/png']
-        if (!validImageTypes.includes(fileType) || size <= fileImage.length) {
-          if (size <= fileImage.length) {
+        if (!validImageTypes.includes(fileType) || size <= fileImages.length) {
+          if (size <= fileImages.length) {
             toast.warning('Hết cỡ rồi bà nội =))')
             toast.clearWaitingQueue()
           } else {
@@ -38,7 +38,7 @@ function DropFile(props: Types) {
           if (file) {
             const preview = URL.createObjectURL(file)
             const path = file.name
-            setFileImage([...fileImage, { preview, path, id: Date.now().toString() }])
+            setFileImages([...fileImages, { preview, path, id: Date.now().toString() }])
           }
         }
       }
@@ -47,29 +47,40 @@ function DropFile(props: Types) {
 
   // delete image view
   const deleteImage = (id: string) => {
-    setFileImage(fileImage.filter((e) => e.id !== id))
+    setFileImages(fileImages.filter((e) => e.id !== id))
   }
 
   return (
     <div className={Styles.DropImage}>
       <ToastContainer limit={1} autoClose={500} hideProgressBar pauseOnFocusLoss={false} />
       <div className={Styles.viewImage}>
-        {fileImage.map((item) => (
-          <div key={item?.preview} className={Styles.Image}>
-            <RiCloseCircleFill className={Styles.close} onClick={() => deleteImage(item?.id)} />
-            <img src={item?.preview} alt={item?.path} />
-          </div>
-        ))}
+        <div className={Styles.Image}>
+          <RiCloseCircleFill
+            className={`${Styles.close} ${fileImages[index] && Styles.isImage}`}
+            onClick={() => deleteImage(fileImages[index]?.id)}
+          />
+          {fileImages[index] && (
+            <img src={fileImages[index]?.preview} alt={fileImages[index]?.path} />
+          )}
+        </div>
       </div>
       <div {...getRootProps()} className={Styles.DropIn}>
         <input {...getInputProps()} alt="input" id="inputDrop" />
 
-        <BsImages size={40} />
-        <b>Kéo thả hoặc chọn {size} ảnh</b>
+        {fileImages[index] ? (
+          <></>
+        ) : (
+          <>
+            <BsImages size={40} />
+            <b>
+              Kéo thả hoặc chọn ảnh cho vị trí {index + 1} hoặc
+              <label htmlFor="inputDrop" className={Styles.buttonOpenFile}>
+                click to open browse
+              </label>
+            </b>
+          </>
+        )}
       </div>
-      <label htmlFor="inputDrop" className={Styles.buttonOpenFile}>
-        Open file Brower
-      </label>
     </div>
   )
 }
