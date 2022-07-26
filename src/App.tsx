@@ -6,12 +6,12 @@ function App() {
     <div className="App">
       <Routes>
         <Route index element={<Login />} />
-        <Route path="/" element={<Layouts />}>
-          <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
-          <Route path="/admin/test" element={<Test />} />
-          <Route path="/admin/:slug" element={<Admin />} />
-          <Route path="/admin/:slug/:opt" element={<Admin />} />
-          <Route path="/admin/:slug/:opt/:action" element={<Admin />} />
+        <Route path="/admin/" element={<Layouts />}>
+          <Route path=":slug/:opt/:action" element={<Admin />} />
+          <Route path=":slug/:opt" element={<Admin />} />
+          <Route path=":slug" element={<Admin />} />
+          <Route path="test" element={<Test />} />
+          <Route path="" element={<Navigate to="/admin/dashboard" replace />} />
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>
