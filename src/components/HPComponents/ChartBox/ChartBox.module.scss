@@ -33,15 +33,15 @@
   z-index: 999;
 }
 .btnChange {
-  background-color: #fbc846;
+  background-color: #ff9b69;
   color: white;
-  padding: 2px 5px;
-  border-radius: 2px;
+  padding: 5px;
+  border-radius: 100rem;
   cursor: pointer;
   box-shadow: 0 0 0 1px rgb(195, 195, 195);
   transition: all linear 0.1s;
   &.active {
-    background-color: #ff5d5d;
+    background-color: var(--color-main);
     color: white;
   }
   &:hover {
