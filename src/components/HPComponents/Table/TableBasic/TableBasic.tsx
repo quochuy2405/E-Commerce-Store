@@ -8,7 +8,7 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import type { Table as Types } from '../../Interface'
 
 function TableBasic(props: Types): JSX.Element {
-  const { datas } = props
+  const { datas, title } = props
   const { enqueueSnackbar } = useSnackbar()
   const [navigation, setNavigation] = useState({
     _limit: 5,
@@ -50,39 +50,39 @@ function TableBasic(props: Types): JSX.Element {
     <>
       <div className={Styles.table}>
         <div className={Styles.tableHeader}>
-          {!!datas?.length && (
-            <>
-              {Object.keys(datas[0]).map((key: string) => (
-                <div key={key} className={Styles.tableTH}>
-                  <p>{key} </p>
-                </div>
-              ))}
-              <div className={Styles.tableTH}>
-                <p>Xóa </p>
-              </div>
-            </>
-          )}
-        </div>
-        <div className={Styles.tableBody}>
-          {datas?.map((item: Product | any) => (
-            <div className={Styles.tableTR} key={item.toString()}>
-              {Object.keys(item).map((key, index) => (
-                <div key={index} className={Styles.tableTD}>
-                  <p></p>
-                  {key.toLocaleLowerCase().includes('url') ? (
-                    <img src={item[key][0]} alt="product" style={{ borderRadius: '3px' }} />
-                  ) : (
-                    <p>{item[key]}</p>
-                  )}
-                </div>
-              ))}
-              <div className={Styles.tableTD}>
-                <p>
-                  <BsTrash />
-                </p>
-              </div>
+          {title.map((key: string) => (
+            <div key={key} className={Styles.tableTH}>
+              <p>{key} </p>
             </div>
           ))}
+          <div className={Styles.tableTH}>
+            <p>Xóa </p>
+          </div>
+        </div>
+        <div className={Styles.tableBody}>
+          {!datas?.length ? (
+            <p className={Styles.noItem}>No item</p>
+          ) : (
+            datas?.map((item: Product | any) => (
+              <div className={Styles.tableTR} key={item.toString()}>
+                {Object.keys(item).map((key, index) => (
+                  <div key={index} className={Styles.tableTD}>
+                    <p></p>
+                    {key.toLocaleLowerCase().includes('url') ? (
+                      <img src={item[key][0]} alt="product" style={{ borderRadius: '3px' }} />
+                    ) : (
+                      <p>{item[key]}</p>
+                    )}
+                  </div>
+                ))}
+                <div className={Styles.tableTD}>
+                  <p className={Styles.btnDelete}>
+                    <BsTrash size={24} />
+                  </p>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
       <div className={Styles.navigation}>

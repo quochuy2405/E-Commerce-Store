@@ -50,6 +50,7 @@ function SelectAbove(props: Types): JSX.Element {
         placeholder="Hãy lựa chọn..."
         onChange={(e) => props?.handelChange(e, props.name)}
         value={props.data?.find((e) => e.value === props.value) || null}
+        isDisabled={props?.disable}
         styles={{
           control: (styles, { isFocused }) => ({
             ...styles,

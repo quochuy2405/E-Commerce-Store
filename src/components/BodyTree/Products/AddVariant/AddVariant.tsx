@@ -19,6 +19,17 @@ const sizesByText = [
   { value: 'strawberry', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' }
 ]
+const titleTable = [
+  'Name',
+  'Category',
+  'Photo',
+  'Brand',
+  'Gender',
+  'Description',
+  'Price',
+  'Quantity',
+  'Size'
+]
 
 function AddVariant(): JSX.Element {
   const { slug, opt } = useParams()
@@ -205,6 +216,7 @@ function AddVariant(): JSX.Element {
                 handelChange={(e) => {
                   onChangeData(e, 'Size')
                 }}
+                disable={!product?.Category}
                 title="Size"
                 name="Size"
                 data={sizesByText}
@@ -216,6 +228,7 @@ function AddVariant(): JSX.Element {
                 handelChange={(e) => {
                   onChangeData(e, 'Gender')
                 }}
+                disable={!product?.Size}
                 title="Gender"
                 name="Gender"
                 data={sizesByText}
@@ -259,7 +272,7 @@ function AddVariant(): JSX.Element {
         </div>
         <p className={Styles.titleTableView}>Variant</p>
         <div className={Styles.tableView}>
-          <Table datas={products} />
+          <Table datas={products} title={titleTable} />
         </div>
         <div className={Styles.groupBtn}>
           <div className={Styles.btnAdd}>

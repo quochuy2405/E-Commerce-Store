@@ -38,6 +38,7 @@ interface Select {
   isRequired?: boolean
   className?: string | unknown
   toolTip?: string
+  disable?: boolean
 }
 interface InputColor {
   id: string
@@ -61,6 +62,7 @@ interface TextArea {
 
 interface Table {
   datas?: Array<object>
+  title: string[]
 }
 
 interface Dialog {
