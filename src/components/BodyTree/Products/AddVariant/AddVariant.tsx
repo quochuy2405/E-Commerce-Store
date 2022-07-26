@@ -1,15 +1,18 @@
 import DropFile from '@/components/DropFile'
-import { StatusTag, Table } from '@/components/HPComponents'
+import { Dialog, StatusTag, Table } from '@/components/HPComponents'
 import { InputAbove } from '@/components/HPComponents/Input'
+import { KeyValue } from '@/components/HPComponents/Interface'
 import { SelectAbove } from '@/components/HPComponents/Select'
 import { TextAreaAbove } from '@/components/HPComponents/TextArea'
 import type { FileView } from '@/components/Interface'
 import type { Product } from '@/types'
-import { FcNext } from 'react-icons/fc'
+import { useSnackbar } from 'notistack'
 import { memo, useState } from 'react'
 import { BsPlusLg } from 'react-icons/bs'
+import { FcNext } from 'react-icons/fc'
 import { useParams } from 'react-router-dom'
-import Styles from './AddProduct.module.scss'
+import type { SingleValue } from 'react-select'
+import Styles from './AddVariant.module.scss'
 
 const sizesByText = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -17,37 +20,11 @@ const sizesByText = [
   { value: 'vanilla', label: 'Vanilla' }
 ]
 
-function AddProduct(): JSX.Element {
+function AddVariant(): JSX.Element {
   const { slug, opt } = useParams()
+  const { enqueueSnackbar } = useSnackbar()
   const [fileImages, setFileImages] = useState<Array<FileView>>([])
-  const [products, setProducts] = useState<Product[]>([
-    {
-      Name: 'Giày adidas',
-      Category: 'Giày thể thao',
-      PhotoURL: [
-        'https://assets.adidas.com/images/w_600,f_auto,q_auto/ce8a6f3aa6294de988d7abce00c4e459_9366/Breaknet_Shoes_White_FX8707_01_standard.jpg'
-      ],
-      Brand: 'adidas',
-      Gender: 'Men',
-      Description: 'hãy là giày gì đó hãy là giày gì đó hãy là giày gì đó hãy là giày gì đó',
-      Price: '20003',
-      Quantity: '12',
-      Size: '23'
-    },
-    {
-      Name: 'Giày adidas',
-      Category: 'Giày thể thao',
-      PhotoURL: [
-        'https://assets.adidas.com/images/w_600,f_auto,q_auto/ce8a6f3aa6294de988d7abce00c4e459_9366/Breaknet_Shoes_White_FX8707_01_standard.jpg'
-      ],
-      Brand: 'adidas',
-      Gender: 'Men',
-      Description: 'hãy là giày gì đó hãy là giày gì đó hãy là giày gì đó hãy là giày gì đó',
-      Price: '20003',
-      Quantity: '12',
-      Size: '23'
-    }
-  ])
+  const [openAttribute, setOpenAttribute] = useState<boolean>(false)
   const [product, setProduct] = useState<Product>({
     Name: '',
     Category: '',
@@ -55,10 +32,21 @@ function AddProduct(): JSX.Element {
     Brand: '',
     Gender: '',
     Description: '',
-    Price: '',
-    Quantity: '',
+    Price: '1',
+    Quantity: '1',
     Size: ''
   })
+  const [validate, setValidate] = useState({
+    Name: false,
+    Category: false,
+    Brand: false,
+    Gender: false,
+    Description: false,
+    Price: false,
+    Quantity: false,
+    Size: false
+  })
+  const [products, setProducts] = useState<Product[]>([])
 
   // set data form on change
   const onChangeData = (
@@ -66,12 +54,100 @@ function AddProduct(): JSX.Element {
       | React.ChangeEvent<HTMLSelectElement>
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
+      | SingleValue<any>,
+    name?: string
   ) => {
-    setProduct({ ...product, [event.target.name]: event.target.value })
+    const keyName = name || event.target.name
+    const keyValue = event.value || event.target.value
+    setProduct({ ...product, [keyName]: keyValue })
+    setValidate({ ...validate, [keyName]: !keyValue })
+  }
+
+  // set data form on change
+  const onAddVariant = () => {
+    const photoURL = fileImages.map((item) => item.preview)
+    const productAdd = { ...product, PhotoURL: photoURL }
+    const isValid = Object.values(productAdd).every((v) => !v === false)
+    if (isValid && fileImages.length) {
+      setProducts([...products, productAdd])
+      setProduct({
+        Name: '',
+        Category: '',
+        PhotoURL: [],
+        Brand: '',
+        Gender: '',
+        Description: '',
+        Price: '1',
+        Quantity: '1',
+        Size: ''
+      })
+      setFileImages([])
+    } else {
+      enqueueSnackbar('Kiểm tra lại thông tin', { variant: 'warning' })
+    }
   }
 
   return (
     <>
+      <Dialog open={openAttribute} setOpen={setOpenAttribute} style={{ padding: '30px 100px' }}>
+        <>
+          <InputAbove
+            value={product?.Name}
+            type="text"
+            name="Name"
+            textInvalid="Nhập tên sản phẩm"
+            key="Name"
+            title="Product Name"
+            handelChange={(e) => {
+              onChangeData(e)
+            }}
+            invalid={validate?.Name}
+            isRequired={true}
+          />
+
+          <InputAbove
+            value={product?.Name}
+            type="text"
+            name="Name"
+            textInvalid="Nhập tên sản phẩm"
+            key="Name"
+            title="Product Name"
+            handelChange={(e) => {
+              onChangeData(e)
+            }}
+            invalid={validate?.Name}
+            isRequired={true}
+          />
+
+          <InputAbove
+            value={product?.Name}
+            type="text"
+            name="Name"
+            textInvalid="Nhập tên sản phẩm"
+            key="Name"
+            title="Product Name"
+            handelChange={(e) => {
+              onChangeData(e)
+            }}
+            invalid={validate?.Name}
+            isRequired={true}
+          />
+
+          <InputAbove
+            value={product?.Name}
+            type="text"
+            name="Name"
+            textInvalid="Nhập tên sản phẩm"
+            key="Name"
+            title="Product Name"
+            handelChange={(e) => {
+              onChangeData(e)
+            }}
+            invalid={validate?.Name}
+            isRequired={true}
+          />
+        </>
+      </Dialog>
       <div className={Styles.Bar}>
         <div className={Styles.RouteLink}>
           <StatusTag title={'admin'} type={'success'} />
@@ -80,62 +156,71 @@ function AddProduct(): JSX.Element {
           {opt && <FcNext />}
           <StatusTag title={opt?.toString() || ''} type={'error'} />
         </div>
-        <div className={Styles.btnAddVariant}>
-          <p>Add Variant</p>
+        <div className={Styles.btnAddVariant} onClick={() => setOpenAttribute(true)}>
+          <p>Add Attribute</p>
         </div>
       </div>
-      <div className={Styles.addProduct}>
+      <div className={Styles.addVariant}>
         <div className={Styles.formInput}>
           <div className={Styles.groupTypeText}>
             <div className={Styles.textShort}>
               <SelectAbove
-                value="002"
-                handelChange={() => {
-                  console.log('')
+                value={product?.Category}
+                handelChange={(e) => {
+                  onChangeData(e, 'Category')
                 }}
+                name="Category"
                 title="Category"
                 data={sizesByText}
+                invalid={validate?.Category}
                 isRequired={true}
                 toolTip="Hãy lựa chọn nếu không có sự lựa chọn hãy tạo thêm"
               />
               <InputAbove
-                value={product.Name}
+                value={product?.Name}
                 type="text"
                 name="Name"
-                textInvalid=""
+                textInvalid="Nhập tên sản phẩm"
                 key="Name"
                 title="Product Name"
                 handelChange={(e) => {
                   onChangeData(e)
                 }}
-                invalid={false}
+                invalid={validate?.Name}
                 isRequired={true}
               />
               <SelectAbove
-                value="002"
-                handelChange={() => {
-                  console.log('')
+                value={product?.Brand}
+                handelChange={(e) => {
+                  onChangeData(e, 'Brand')
                 }}
-                title="Brand  "
+                title="Brand"
+                name="Brand"
                 data={sizesByText}
+                invalid={validate.Brand}
                 isRequired={true}
               />
               <SelectAbove
-                value="002"
-                handelChange={() => {
-                  console.log('')
+                value={product?.Size}
+                handelChange={(e) => {
+                  onChangeData(e, 'Size')
                 }}
-                title="Status"
+                title="Size"
+                name="Size"
                 data={sizesByText}
+                invalid={validate.Size}
                 isRequired={true}
               />
               <SelectAbove
-                value="2"
-                handelChange={() => {
-                  console.log('')
+                value={product?.Gender}
+                handelChange={(e) => {
+                  onChangeData(e, 'Gender')
                 }}
-                title="Select size"
+                title="Gender"
+                name="Gender"
                 data={sizesByText}
+                invalid={validate.Gender}
+                isRequired={true}
               />
             </div>
             <div className={Styles.Description}>
@@ -148,7 +233,7 @@ function AddProduct(): JSX.Element {
                 handelChange={(e) => {
                   onChangeData(e)
                 }}
-                invalid={false}
+                invalid={validate.Description}
                 isRequired={true}
                 row={12}
               />
@@ -166,6 +251,13 @@ function AddProduct(): JSX.Element {
             ))}
           </div>
         </div>
+        <div className={Styles.groupBtn} onClick={() => onAddVariant()}>
+          <div className={Styles.btnAdd}>
+            <BsPlusLg size={10} />
+            <p>Add To List</p>
+          </div>
+        </div>
+        <p className={Styles.titleTableView}>Variant</p>
         <div className={Styles.tableView}>
           <Table datas={products} />
         </div>
@@ -183,7 +275,7 @@ function AddProduct(): JSX.Element {
   )
 }
 
-export default memo(AddProduct)
+export default memo(AddVariant)
 
 //  <div className={Styles.selectColor}>
 //             <p className={Styles.titleInput}>Select color</p>

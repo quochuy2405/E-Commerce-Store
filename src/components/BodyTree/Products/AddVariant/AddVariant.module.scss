@@ -13,7 +13,7 @@
   justify-items: flex-start;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 2px;
 
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -50,7 +50,7 @@
   grid-template-areas:
     'h1 h1 h2 h4'
     'h1 h1 h3 h5';
-  grid-template-rows: 200px;
+  grid-template-rows: 150px;
   gap: 20px;
   grid-template-columns: 20%;
   @for $i from 0 through 5 {
@@ -79,6 +79,7 @@
   justify-content: center;
   align-items: center;
   width: 150px;
+  gap: 5px;
 
   border-radius: 3px;
   margin: 10px 0;
@@ -111,6 +112,11 @@
   margin: 10px 0;
   font-weight: 400;
   transition: all ease-in 0.2s;
+}
+.titleTableView {
+  font-size: 1.3rem;
+  font-weight: 600;
+  align-self: flex-start;
 }
 .tableView {
   width: 100%;

@@ -13,12 +13,14 @@
   100% {
     width: 0;
     height: 0;
+    display: none;
   }
 }
 @keyframes open {
   0% {
     width: 0;
     height: 0;
+    display: none;
   }
   80% {
     width: 41vw;
@@ -38,30 +40,39 @@
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all linear 0.2s;
   &.open {
     animation-name: open;
     animation-duration: 0.3s;
     animation-fill-mode: forwards;
+    visibility: visible;
   }
   &.close {
     animation-name: close;
     animation-duration: 0.3s;
     animation-fill-mode: forwards;
     box-shadow: none;
+    visibility: hidden;
   }
 }
 
 .overLay {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(183, 183, 183, 0.426);
+  backdrop-filter: blur(10px);
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 999;
   display: none;
+  visibility: hidden;
+  transition: all linear 0.2s;
   &.open {
     display: block;
+    visibility: visible;
+    transition: all linear 0.2s;
   }
 }

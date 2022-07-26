@@ -1,13 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import { memo, useCallback, useEffect, useRef, useState } from 'react'
-import { useDropzone } from 'react-dropzone'
-import { RiCloseCircleFill } from 'react-icons/ri'
-import { BsImages } from 'react-icons/bs'
 import Styles from '@/components/DropFile/DropFile.module.scss'
-import type { DropFile as Types, FileView } from '../Interface'
-import { toast, ToastContainer } from 'react-toastify'
+import { useSnackbar } from 'notistack'
+import { memo } from 'react'
+import { useDropzone } from 'react-dropzone'
+import { BsImages } from 'react-icons/bs'
+import { RiCloseCircleFill } from 'react-icons/ri'
+import type { DropFile as Types } from '../Interface'
 
 function DropFile(props: Types) {
+  const { enqueueSnackbar } = useSnackbar()
   const { fileImages, setFileImages, size, index } = props
 
   // set up drop
@@ -28,11 +29,9 @@ function DropFile(props: Types) {
         const validImageTypes = ['image/gif', 'image/jpeg', 'image/png']
         if (!validImageTypes.includes(fileType) || size <= fileImages.length) {
           if (size <= fileImages.length) {
-            toast.warning('Hết cỡ rồi bà nội =))')
-            toast.clearWaitingQueue()
+            enqueueSnackbar('Alo Quá tải r', { variant: 'warning' })
           } else {
-            toast.error('Sai định dạng gòi bà =))')
-            toast.clearWaitingQueue()
+            enqueueSnackbar('Sai định dạng gòi bà =))', { variant: 'warning' })
           }
         } else {
           if (file) {
@@ -52,7 +51,6 @@ function DropFile(props: Types) {
 
   return (
     <div className={Styles.DropImage}>
-      <ToastContainer limit={1} autoClose={500} hideProgressBar pauseOnFocusLoss={false} />
       <div className={Styles.viewImage}>
         <div className={Styles.Image}>
           <RiCloseCircleFill

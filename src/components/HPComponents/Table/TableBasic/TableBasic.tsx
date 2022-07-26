@@ -1,16 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import Styles from '@/components/HPComponents/Table/TableBasic/TableBasic.module.scss'
 import type { Product } from '@/types'
-import React, { memo, useEffect, useState } from 'react'
+import { useSnackbar } from 'notistack'
+import { memo, useState } from 'react'
+import { BsTrash } from 'react-icons/bs'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
-import { toast, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import type { KeyValue, Table as Types } from '../../Interface'
+import type { Table as Types } from '../../Interface'
 
 function TableBasic(props: Types): JSX.Element {
   const { datas } = props
-  const [checkList, setCheckList] = useState<KeyValue[]>([])
-  const [checkAll, setCheckAll] = useState(false)
+  const { enqueueSnackbar } = useSnackbar()
   const [navigation, setNavigation] = useState({
     _limit: 5,
     _start: 1,
@@ -20,9 +19,7 @@ function TableBasic(props: Types): JSX.Element {
 
   //copy information of record to clipboard
   const handelCopyToBoard = (text: string) => {
-    navigator.clipboard.writeText(text)
-    toast.success('Đã copy')
-    toast.clearWaitingQueue()
+    enqueueSnackbar('Đã copy', { variant: 'warning' })
   }
 
   // set number and loading data from db
@@ -49,56 +46,26 @@ function TableBasic(props: Types): JSX.Element {
     return value
   }
 
-  // set check all
-  const handleCheckAll = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked === false) {
-      setCheckList([])
-    }
-    setCheckAll(event.target.checked)
-  }
-
-  // set check for each input checkbox and uncheck all
-  const handleCheck = (event: React.ChangeEvent<HTMLInputElement>, key: string | undefined) => {
-    const data = checkList.find((e) => e.key === key)
-    if (!data) {
-      setCheckList([...checkList, { key: key, value: event.target.checked }])
-    } else {
-      const checkNews = checkList.filter((e) => e.key !== key)
-      setCheckList([...checkNews])
-    }
-  }
-
-  // listen check all when click all check
-  useEffect(() => {
-    if (checkList.length === datas?.length) {
-      setCheckAll(true)
-    }
-  }, [checkList.length, datas?.length])
-
   return (
     <>
       <div className={Styles.table}>
-        <ToastContainer limit={1} autoClose={500} hideProgressBar pauseOnFocusLoss={false} />
         <div className={Styles.tableHeader}>
-          <input type={'checkbox'} checked={checkAll} onChange={(e) => handleCheckAll(e)} />
-          {datas?.length &&
-            Object.keys(datas[0]).map((key: string) => (
-              <div key={key} className={Styles.tableTH}>
-                <p>{key} </p>
+          {!!datas?.length && (
+            <>
+              {Object.keys(datas[0]).map((key: string) => (
+                <div key={key} className={Styles.tableTH}>
+                  <p>{key} </p>
+                </div>
+              ))}
+              <div className={Styles.tableTH}>
+                <p>Xóa </p>
               </div>
-            ))}
+            </>
+          )}
         </div>
         <div className={Styles.tableBody}>
-          {datas?.map((item: Product | any, index) => (
+          {datas?.map((item: Product | any) => (
             <div className={Styles.tableTR} key={item.toString()}>
-              <input
-                type={'checkbox'}
-                checked={
-                  checkAll ||
-                  checkList.find((e) => e?.key === index.toString())?.value?.toString() === 'true'
-                }
-                onChange={(e) => handleCheck(e, index.toString())}
-              />
               {Object.keys(item).map((key, index) => (
                 <div key={index} className={Styles.tableTD}>
                   <p></p>
@@ -109,6 +76,11 @@ function TableBasic(props: Types): JSX.Element {
                   )}
                 </div>
               ))}
+              <div className={Styles.tableTD}>
+                <p>
+                  <BsTrash />
+                </p>
+              </div>
             </div>
           ))}
         </div>

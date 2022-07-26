@@ -1,25 +1,26 @@
 .inputField {
   padding: 0;
-  border-radius: 3px;
-  border: 1px solid rgb(198, 198, 198);
+  border-radius: 2px;
+  box-shadow: 0 0 0 0.9px #cccccc;
   display: flex;
   align-items: center;
-  background-color: white;
-  margin: 4px 0;
+  background-color: #ffffff;
+  margin-bottom: 15px;
+  border: none;
   & input {
     width: 100%;
     border-radius: inherit;
-    padding: 5px 10px;
+    padding: 6px 10px;
   }
   &:focus-within {
-    border: 2px solid cornflowerblue;
+    box-shadow: 0 0 0 2px #6495ed;
   }
 }
 .invalid {
   font-size: 0.7rem;
-  color: rgb(255, 43, 43);
+  color: #ff2b2b;
   position: absolute;
-  bottom: -15px;
+  bottom: -18px;
   display: block;
 }
 .inputBox {
@@ -35,5 +36,5 @@
   gap: 10px;
 }
 .isRequired {
-  color: rgb(187, 187, 187);
+  color: #bbbbbb;
 }

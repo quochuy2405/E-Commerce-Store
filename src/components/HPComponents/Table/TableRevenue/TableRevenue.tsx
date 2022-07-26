@@ -2,9 +2,7 @@ import Styles from '@/components/HPComponents/Table/TableRevenue/TableRevenue.mo
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { TbTableExport } from 'react-icons/tb'
-import { toast, ToastContainer } from 'react-toastify'
 import { memo, useState } from 'react'
-import 'react-toastify/dist/ReactToastify.css'
 import StatusTag from '../../StatusTag'
 
 const listTitle = [
@@ -45,8 +43,6 @@ function TableRevenue(): JSX.Element {
   //copy information of record to clipboard
   const handelCopyToBoard = (text: string) => {
     navigator.clipboard.writeText(text)
-    toast.success('Đã copy')
-    toast.clearWaitingQueue()
   }
 
   // set number and loading data from db
@@ -75,7 +71,6 @@ function TableRevenue(): JSX.Element {
 
   return (
     <>
-      <ToastContainer limit={1} autoClose={500} hideProgressBar pauseOnFocusLoss={false} />
       <div className={Styles.table}>
         <div className={Styles.optionTable}>
           <p className={Styles.title}>Name Table</p>

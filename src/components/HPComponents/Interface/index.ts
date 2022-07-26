@@ -1,4 +1,5 @@
 import type React from 'react'
+import type { SingleValue } from 'react-select'
 
 interface KeyValue {
   key: string | number | readonly string[] | undefined
@@ -25,7 +26,10 @@ interface Input {
 interface Select {
   id?: string
   value: string
-  handelChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  handelChange: (
+    event: React.ChangeEvent<HTMLSelectElement> | SingleValue<any>,
+    name?: string
+  ) => void
   data?: Array<SelectKey>
   name?: string
   title?: string
@@ -57,6 +61,13 @@ interface TextArea {
 
 interface Table {
   datas?: Array<object>
+}
+
+interface Dialog {
+  children?: React.ReactElement<any, any>
+  open: boolean
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  style?: object
 }
 interface Button {
   handleOnCick?: () => void
@@ -97,5 +108,6 @@ export type {
   InputColor,
   Select,
   Table,
-  KeyValue
+  KeyValue,
+  Dialog
 }

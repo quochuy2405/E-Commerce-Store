@@ -1,20 +1,22 @@
 import Styles from '@/components/HPComponents/Dialog/Dialog.module.scss'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import type { Dialog as Types } from '../Interface'
 
-function Dialog(): JSX.Element {
-  const [open, setOpen] = useState(false)
+function Dialog(props: Types): JSX.Element {
+  const { children, style, open, setOpen } = props
 
   return (
     <>
       <div
-        style={{ position: 'absolute', zIndex: '1000' }}
-        className="click"
-        onClick={() => setOpen((e) => !e)}
+        className={`${Styles.overLay}  ${open && Styles.open}`}
+        onClick={() => setOpen(false)}
+      ></div>
+      <div
+        className={`${Styles.dialog} ${!open && Styles.close} ${open && Styles.open}`}
+        style={style}
       >
-        <button>Click</button>
+        {children}
       </div>
-      <div className={`${Styles.overLay}  ${open && Styles.open}`}></div>
-      <div className={`${Styles.dialog} ${!open && Styles.close} ${open && Styles.open}`}></div>
     </>
   )
 }
