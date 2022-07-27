@@ -25,6 +25,7 @@
 
 .formInput {
   width: 100%;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +51,7 @@
   grid-template-areas:
     'h1 h1 h2 h4'
     'h1 h1 h3 h5';
-  grid-template-rows: 150px;
+  grid-template-rows: 180px;
   gap: 20px;
   grid-template-columns: 20%;
   @for $i from 0 through 5 {
@@ -127,7 +128,9 @@
   @include paperBlank;
   width: 100%;
   height: 50px;
-  margin: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
   border-radius: 3px;
   display: flex;
   justify-content: space-between;
