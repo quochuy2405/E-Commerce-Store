@@ -2,55 +2,55 @@ import type { KeyNameTree } from '../Interface'
 
 const Home: Array<KeyNameTree> = [
   {
-    name: 'Overview',
-    key: '1'
+    name: 'Accounts',
+    key: 'accounts'
   },
   {
-    name: 'Oke',
-    key: '2'
+    name: 'Promotion',
+    key: 'promotion'
   }
 ]
 const User: Array<KeyNameTree> = [
   {
-    name: 'Overview',
-    key: '1'
+    name: 'Accounts',
+    key: 'accounts'
   },
   {
-    name: 'Oke',
-    key: '2'
-  },
-  {
-    name: 'Oke',
-    key: '3'
+    name: 'Checkout Order',
+    key: 'checkout'
   }
 ]
 
 const Products: Array<KeyNameTree> = [
   {
     name: 'Add Product',
-    key: '1'
+    key: 'add'
   },
   {
-    name: 'Oke',
-    key: '2'
+    name: 'Product Details',
+    key: 'details'
   },
   {
-    name: 'Oke',
-    key: '3'
+    name: 'Manager Types',
+    key: 'type'
+  },
+  {
+    name: 'Product Expired',
+    key: 'expired'
   }
 ]
-const Hello: Array<KeyNameTree> = [
+const Order: Array<KeyNameTree> = [
   {
-    name: 'Overview',
-    key: '1'
+    name: 'Check Out',
+    key: 'checkout'
   },
   {
-    name: 'Oke',
-    key: '2'
+    name: 'Coupond',
+    key: 'coupond'
   },
   {
-    name: 'Oke',
-    key: '3'
+    name: 'Delivery',
+    key: 'delivery'
   }
 ]
-export { Home, User, Hello, Products }
+export { Home, User, Order, Products }

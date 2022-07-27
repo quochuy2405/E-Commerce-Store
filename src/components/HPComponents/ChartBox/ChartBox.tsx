@@ -92,7 +92,7 @@ function ChartBox(props: Chart): JSX.Element {
       <Pie
         options={optionsBarChart}
         data={dataLine}
-        style={{ transform: `scale(${size * (3 / 5)})` }}
+        style={{ transform: `scale(${size * (2.6 / 5)})` }}
         className={Styles.chart}
       />
     )

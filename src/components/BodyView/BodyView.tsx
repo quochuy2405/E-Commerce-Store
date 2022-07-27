@@ -1,11 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { ListTreeItem } from '../Constant/ListTreeItemSwitch'
+import { useNavigate, useParams } from 'react-router-dom'
 import { ListTreeItemActions } from '../Constant/ListTreeItemActions'
+import { ListTreeItem } from '../Constant/ListTreeItemSwitch'
 import ListTreeView from '../Constant/ListTreeView'
 function BodyView(): JSX.Element {
   const { slug, opt, action } = useParams()
-  const [body, setBody] = useState<React.ReactElement>()
+  const navigate = useNavigate()
+  const [body, setBody] = useState<React.ReactElement>(<>Default</>)
 
   // set body of tree view render from list tree view are setted from folder Constant
   useEffect(() => {
@@ -13,13 +15,21 @@ function BodyView(): JSX.Element {
       setBody(ListTreeView.find((e) => e.link == `/admin/${slug}`)?.body || <></>)
     } else {
       if (!action) {
-        setBody(ListTreeItem.find((e) => e.parentURL === slug && e.opt === opt)?.body || <></>)
+        const Element = ListTreeItem.find((e) => e.parentURL === slug && e.opt === opt)
+        if (!Element) {
+          navigate('/notfound', { replace: false })
+        } else {
+          setBody(Element?.body || <></>)
+        }
       } else {
-        setBody(
-          ListTreeItemActions.find(
-            (e) => e.parentURL === slug && e.opt === opt && e.action === action
-          )?.body || <></>
+        const Element = ListTreeItemActions.find(
+          (e) => e.parentURL === slug && e.opt === opt && e.action === action
         )
+        if (!Element) {
+          navigate('/notfound', { replace: false })
+        } else {
+          setBody(Element?.body || <></>)
+        }
       }
     }
   }, [slug, opt, action])

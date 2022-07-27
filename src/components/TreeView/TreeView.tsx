@@ -28,7 +28,7 @@ function TreeView(props: Model): JSX.Element {
   const [openTreeItem, setOpenTreeItem] = useState(slug === treeKey || false)
 
   // set max height for each object of tree view
-  document.documentElement.style.setProperty('--max-HeightListTree', `${sizeItem * 40}px`)
+  document.documentElement.style.setProperty('--max-HeightListTree', `${(sizeItem + 1) * 40}px`)
 
   return (
     <div className={Styles.listTree}>

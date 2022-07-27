@@ -5,19 +5,26 @@ import type { TreeItemSwitch } from '../Interface'
 // List tree have body to render in body admin
 // URL be will match with url setup in navigation tree
 const ListTreeItem: Array<TreeItemSwitch> = [
-  { parentURL: 'dashboard', opt: '1', body: <>Tree dashboard1</> },
-  { parentURL: 'dashboard', opt: '2', body: <>Tree dashboard2</> },
-  { parentURL: 'product', opt: '1', body: <AddProduct /> },
-  { parentURL: 'product', opt: '2', body: <>Tree user2</> },
-  { parentURL: 'product', opt: '3', body: <>Tree user3</> },
-  { parentURL: 'user', opt: '3', body: <>Tree user3</> },
+  { parentURL: 'dashboard', opt: 'accounts', body: <>Tree dashboard accounts</> },
+  { parentURL: 'dashboard', opt: 'promotion', body: <>Tree dashboard promotion</> },
+  { parentURL: 'order', opt: 'checkout', body: <>Tree checkout order</> },
+  { parentURL: 'order', opt: 'coupond', body: <>Tree coupond</> },
+  { parentURL: 'order', opt: 'delivery', body: <>Tree delivery</> },
+  { parentURL: 'product', opt: 'add', body: <AddProduct /> },
+  { parentURL: 'product', opt: 'details', body: <>Tree details</> },
+  { parentURL: 'product', opt: 'type', body: <>Tree type</> },
+  { parentURL: 'customer', opt: 'accounts', body: <AddProduct /> },
+  { parentURL: 'customer', opt: 'checkout', body: <>Tree checkout</> },
+  { parentURL: 'customer', opt: 'type', body: <>Tree type</> },
+  { parentURL: 'category', opt: 'accounts', body: <AddProduct /> },
+  { parentURL: 'category', opt: 'checkout', body: <>Tree checkout</> },
+  { parentURL: 'category', opt: 'type', body: <>Tree type</> },
+  { parentURL: 'user', opt: 'expired', body: <>Tree expired</> },
   {
     parentURL: 'hello',
     opt: '1',
-    body: <Table />
-  },
-  { parentURL: 'hello', opt: '2', body: <>Tree hello2</> },
-  { parentURL: 'hello', opt: '3', body: <>Tree hello3</> }
+    body: <Table title={[]} />
+  }
 ]
 
 export { ListTreeItem }
