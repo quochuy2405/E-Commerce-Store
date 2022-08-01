@@ -35,18 +35,37 @@
   gap: 100px;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 .textShort {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-direction: column;
 }
 .Description,
-.SelectSize {
+.SelectSize,
+.Price {
   flex: 1;
 }
-.Price {
+.Size {
   flex: 0.5;
 }
+.Price,
+.Size {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: column;
+}
+.Flex {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 10px;
+}
+
 .groupTypeSpeacial {
   display: grid;
   width: 90%;

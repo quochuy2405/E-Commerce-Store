@@ -9,6 +9,7 @@ interface SelectKey {
   value: string
   label: string | number | readonly string[] | undefined
 }
+
 interface Input {
   id?: string
   value: string | number
@@ -31,6 +32,24 @@ interface Select {
     name?: string
   ) => void
   data?: Array<SelectKey>
+  name?: string
+  title?: string
+  invalid?: boolean
+  textInvalid?: string
+  isRequired?: boolean
+  className?: string | unknown
+  toolTip?: string
+  disable?: boolean
+}
+interface SelectColor {
+  id?: string
+  value: string
+  handelChange: (
+    event: React.ChangeEvent<HTMLSelectElement> | SingleValue<any>,
+    name?: string,
+    value?: string
+  ) => void
+  data: Array<KeyValue>
   name?: string
   title?: string
   invalid?: boolean
@@ -112,5 +131,6 @@ export type {
   Select,
   Table,
   KeyValue,
-  Dialog
+  Dialog,
+  SelectColor
 }

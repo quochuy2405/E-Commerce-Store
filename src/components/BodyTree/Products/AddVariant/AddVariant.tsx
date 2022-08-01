@@ -2,7 +2,7 @@ import DropFile from '@/components/DropFile'
 import { Dialog, StatusTag, Table } from '@/components/HPComponents'
 import { InputAbove, InputNumber } from '@/components/HPComponents/Input'
 import { KeyValue } from '@/components/HPComponents/Interface'
-import { SelectAbove } from '@/components/HPComponents/Select'
+import { SelectAbove, SelectColor } from '@/components/HPComponents/Select'
 import { TextAreaAbove } from '@/components/HPComponents/TextArea'
 import type { FileView } from '@/components/Interface'
 import type { Product } from '@/types'
@@ -47,7 +47,8 @@ function AddVariant(): JSX.Element {
     Description: '',
     Price: '1',
     Quantity: '0',
-    Size: ''
+    Size: '',
+    Color: ''
   })
   const [validate, setValidate] = useState({
     Name: false,
@@ -57,7 +58,8 @@ function AddVariant(): JSX.Element {
     Description: false,
     Price: false,
     Quantity: false,
-    Size: false
+    Size: false,
+    Color: false
   })
   const [products, setProducts] = useState<Product[]>([])
 
@@ -71,6 +73,7 @@ function AddVariant(): JSX.Element {
     name?: string,
     value?: string | number
   ) => {
+    console.log(value)
     const keyName = name || event.target.name
     const keyValue = value?.toString() || event.value || event.target.value
     setProduct({ ...product, [keyName]: keyValue })
@@ -93,7 +96,8 @@ function AddVariant(): JSX.Element {
         Description: '',
         Price: '1',
         Quantity: '1',
-        Size: ''
+        Size: '',
+        Color: ''
       })
       setFileImages([])
     } else {
@@ -216,78 +220,73 @@ function AddVariant(): JSX.Element {
             ))}
           </div>
           <div className={Styles.groupTypeText}>
-            <div className={Styles.Price}>
-              <InputAbove
-                value={product?.Name}
-                type="text"
-                name="Name"
-                textInvalid="Nhập tên sản phẩm"
-                key="Name"
-                title="Name"
-                handelChange={(e) => {
-                  onChangeData(e)
-                }}
-                invalid={validate?.Name}
-                isRequired={true}
-              />
-
-              <InputNumber
-                value={product?.Quantity}
-                name="Quantity"
-                textInvalid="Nhập tên sản phẩm"
-                key="Quantity"
-                title="Quantity"
-                handelChange={onChangeData}
-                invalid={validate?.Quantity}
-                isRequired={true}
-              />
-            </div>
-            <div className={Styles.Price}>
-              <InputAbove
-                value={product?.Name}
-                type="number"
-                name="Name"
-                textInvalid="Nhập tên sản phẩm"
-                key="Name"
-                title="Name"
-                handelChange={(e) => {
-                  onChangeData(e, 'Name')
-                }}
-                invalid={validate?.Name}
-                isRequired={true}
-              />
-
-              <InputNumber
-                value={product?.Quantity}
-                name="Quantity"
-                textInvalid="Nhập tên sản phẩm"
-                key="Quantity"
-                title="Quantity"
-                handelChange={onChangeData}
-                invalid={validate?.Quantity}
-                isRequired={true}
-              />
-            </div>
-            <div className={Styles.SelectSize}>
+            <div className={Styles.Size}>
               <SelectAbove
-                value={product?.Category}
+                value={product?.Size}
                 handelChange={(e) => {
                   onChangeData(e, 'Category')
                 }}
-                name="Category"
-                title="Category"
+                name="Size"
+                title="Select Size"
                 data={sizesByText}
                 invalid={validate?.Category}
                 isRequired={true}
                 toolTip="Hãy lựa chọn nếu không có sự lựa chọn hãy tạo thêm"
               />
+              <SelectColor
+                value={product?.Color}
+                handelChange={onChangeData}
+                name="Size"
+                title="Select Size"
+                data={[
+                  {
+                    key: '1',
+                    value: '#F9F5EB'
+                  },
+                  {
+                    key: '2',
+                    value: '#1C3879'
+                  }
+                ]}
+                invalid={validate?.Color}
+                isRequired={true}
+                toolTip="Hãy lựa chọn nếu không có sự lựa chọn hãy tạo thêm"
+              />
+            </div>
+            <div className={Styles.Price}>
+              <div className={Styles.Flex}>
+                <InputAbove
+                  value={product?.Name}
+                  type="number"
+                  name="Price"
+                  textInvalid="Nhập tên sản phẩm"
+                  key="Price"
+                  title="Price"
+                  handelChange={(e) => {
+                    onChangeData(e, 'Name')
+                  }}
+                  invalid={validate?.Name}
+                  isRequired={true}
+                />
+
+                <InputNumber
+                  value={product?.Quantity}
+                  name="Quantity"
+                  textInvalid="Nhập tên sản phẩm"
+                  key="Quantity"
+                  title="Quantity"
+                  handelChange={onChangeData}
+                  invalid={validate?.Quantity}
+                  isRequired={true}
+                />
+              </div>
               <SelectAbove
-                value={product?.Category}
+                value={product?.Size}
                 handelChange={(e) => {
                   onChangeData(e, 'Category')
                 }}
-                name="Category"
-                title="Category"
+                name="Status"
+                title="Status"
                 data={sizesByText}
                 invalid={validate?.Category}
                 isRequired={true}

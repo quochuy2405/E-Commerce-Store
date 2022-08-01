@@ -8,4 +8,5 @@ export interface Product {
   Quantity: string
   Size: string
   PhotoURL: string[]
+  Color: string
 }

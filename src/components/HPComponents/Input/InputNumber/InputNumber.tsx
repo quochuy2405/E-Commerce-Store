@@ -5,7 +5,7 @@ import type { Input as Types } from '../../Interface'
 import Styles from './InputNumber.module.scss'
 
 function Input(props: Types): JSX.Element {
-  const [value, setValue] = useState(Number(props.value))
+  const [value, setValue] = useState(Number(props?.value) || 0)
   const refInput = useRef<HTMLInputElement>(null)
 
   const increase = () => {
