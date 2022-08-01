@@ -1,0 +1,37 @@
+.Tag {
+  background-color: var(--color-main);
+  padding: 3px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: 2px;
+  gap: 6px;
+}
+.Tags {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 5px;
+  box-shadow: 0 0 0 1px black;
+  gap: 10px;
+  height: 300px;
+  overflow: scroll;
+
+  ul {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+  }
+}
+.Close {
+  cursor: pointer;
+}

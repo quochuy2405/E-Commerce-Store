@@ -4,13 +4,17 @@
   box-shadow: 0 0 0 0.9px #cccccc;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   background-color: #ffffff;
   margin-bottom: 15px;
   border: none;
+  width: fit-content;
+  font-weight: 600;
   & input {
-    width: 100%;
+    width: 30%;
     border-radius: inherit;
     padding: 6px 10px;
+    text-align: center;
   }
   &:focus-within {
     box-shadow: 0 0 0 2px #6495ed;
@@ -20,11 +24,11 @@
   font-size: 0.7rem;
   color: #ff2b2b;
   position: absolute;
-  bottom: -20px;
+  bottom: -18px;
   display: block;
 }
 .inputBox {
-  width: 100%;
+  width: fit-content;
   height: fit-content;
   position: relative;
 }
@@ -37,4 +41,16 @@
 }
 .isRequired {
   color: #bbbbbb;
+}
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.btnSetNumber {
+  color: var(--color-main);
+  cursor: pointer;
+  transition: all linear 0.1s;
+  &:hover {
+    transform: scale(1.2);
+    transition: all linear 0.1s;
+  }
 }

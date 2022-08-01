@@ -3,4 +3,5 @@
   height: calc(100vh - var(--header-height) - var(--footer-height));
   overflow: scroll;
   background-color: var(--color-white);
+  box-shadow: 5px 2px 8px -7px rgba(85, 85, 85, 0.75);
 }

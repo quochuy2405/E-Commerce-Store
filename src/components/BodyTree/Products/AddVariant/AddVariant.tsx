@@ -1,6 +1,6 @@
 import DropFile from '@/components/DropFile'
 import { Dialog, StatusTag, Table } from '@/components/HPComponents'
-import { InputAbove } from '@/components/HPComponents/Input'
+import { InputAbove, InputNumber } from '@/components/HPComponents/Input'
 import { KeyValue } from '@/components/HPComponents/Interface'
 import { SelectAbove } from '@/components/HPComponents/Select'
 import { TextAreaAbove } from '@/components/HPComponents/TextArea'
@@ -12,6 +12,7 @@ import { BsPlusLg } from 'react-icons/bs'
 import { FcNext } from 'react-icons/fc'
 import { useParams } from 'react-router-dom'
 import type { SingleValue } from 'react-select'
+import AddAtrribute from '../AddAtrribute'
 import Styles from './AddVariant.module.scss'
 
 const sizesByText = [
@@ -35,6 +36,7 @@ function AddVariant(): JSX.Element {
   const { slug, opt } = useParams()
   const { enqueueSnackbar } = useSnackbar()
   const [fileImages, setFileImages] = useState<Array<FileView>>([])
+
   const [openAttribute, setOpenAttribute] = useState<boolean>(false)
   const [product, setProduct] = useState<Product>({
     Name: '',
@@ -44,7 +46,7 @@ function AddVariant(): JSX.Element {
     Gender: '',
     Description: '',
     Price: '1',
-    Quantity: '1',
+    Quantity: '0',
     Size: ''
   })
   const [validate, setValidate] = useState({
@@ -66,10 +68,11 @@ function AddVariant(): JSX.Element {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
       | SingleValue<any>,
-    name?: string
+    name?: string,
+    value?: string | number
   ) => {
     const keyName = name || event.target.name
-    const keyValue = event.value || event.target.value
+    const keyValue = value?.toString() || event.value || event.target.value
     setProduct({ ...product, [keyName]: keyValue })
     setValidate({ ...validate, [keyName]: !keyValue })
   }
@@ -100,64 +103,13 @@ function AddVariant(): JSX.Element {
 
   return (
     <>
-      <Dialog open={openAttribute} setOpen={setOpenAttribute} style={{ padding: '30px 100px' }}>
-        <>
-          <InputAbove
-            value={product?.Name}
-            type="text"
-            name="Name"
-            textInvalid="Nhập tên sản phẩm"
-            key="Name"
-            title="Product Name"
-            handelChange={(e) => {
-              onChangeData(e)
-            }}
-            invalid={validate?.Name}
-            isRequired={true}
-          />
-
-          <InputAbove
-            value={product?.Name}
-            type="text"
-            name="Name"
-            textInvalid="Nhập tên sản phẩm"
-            key="Name"
-            title="Product Name"
-            handelChange={(e) => {
-              onChangeData(e)
-            }}
-            invalid={validate?.Name}
-            isRequired={true}
-          />
-
-          <InputAbove
-            value={product?.Name}
-            type="text"
-            name="Name"
-            textInvalid="Nhập tên sản phẩm"
-            key="Name"
-            title="Product Name"
-            handelChange={(e) => {
-              onChangeData(e)
-            }}
-            invalid={validate?.Name}
-            isRequired={true}
-          />
-
-          <InputAbove
-            value={product?.Name}
-            type="text"
-            name="Name"
-            textInvalid="Nhập tên sản phẩm"
-            key="Name"
-            title="Product Name"
-            handelChange={(e) => {
-              onChangeData(e)
-            }}
-            invalid={validate?.Name}
-            isRequired={true}
-          />
-        </>
+      <Dialog
+        title={'Add Attribute'}
+        open={openAttribute}
+        setOpen={setOpenAttribute}
+        style={{ padding: '30px 100px' }}
+      >
+        <AddAtrribute />
       </Dialog>
       <div className={Styles.Bar}>
         <div className={Styles.RouteLink}>
@@ -263,15 +215,96 @@ function AddVariant(): JSX.Element {
               />
             ))}
           </div>
+          <div className={Styles.groupTypeText}>
+            <div className={Styles.Price}>
+              <InputAbove
+                value={product?.Name}
+                type="text"
+                name="Name"
+                textInvalid="Nhập tên sản phẩm"
+                key="Name"
+                title="Name"
+                handelChange={(e) => {
+                  onChangeData(e)
+                }}
+                invalid={validate?.Name}
+                isRequired={true}
+              />
+
+              <InputNumber
+                value={product?.Quantity}
+                name="Quantity"
+                textInvalid="Nhập tên sản phẩm"
+                key="Quantity"
+                title="Quantity"
+                handelChange={onChangeData}
+                invalid={validate?.Quantity}
+                isRequired={true}
+              />
+            </div>
+            <div className={Styles.Price}>
+              <InputAbove
+                value={product?.Name}
+                type="number"
+                name="Name"
+                textInvalid="Nhập tên sản phẩm"
+                key="Name"
+                title="Name"
+                handelChange={(e) => {
+                  onChangeData(e, 'Name')
+                }}
+                invalid={validate?.Name}
+                isRequired={true}
+              />
+
+              <InputNumber
+                value={product?.Quantity}
+                name="Quantity"
+                textInvalid="Nhập tên sản phẩm"
+                key="Quantity"
+                title="Quantity"
+                handelChange={onChangeData}
+                invalid={validate?.Quantity}
+                isRequired={true}
+              />
+            </div>
+            <div className={Styles.SelectSize}>
+              <SelectAbove
+                value={product?.Category}
+                handelChange={(e) => {
+                  onChangeData(e, 'Category')
+                }}
+                name="Category"
+                title="Category"
+                data={sizesByText}
+                invalid={validate?.Category}
+                isRequired={true}
+                toolTip="Hãy lựa chọn nếu không có sự lựa chọn hãy tạo thêm"
+              />
+              <SelectAbove
+                value={product?.Category}
+                handelChange={(e) => {
+                  onChangeData(e, 'Category')
+                }}
+                name="Category"
+                title="Category"
+                data={sizesByText}
+                invalid={validate?.Category}
+                isRequired={true}
+                toolTip="Hãy lựa chọn nếu không có sự lựa chọn hãy tạo thêm"
+              />
+            </div>
+          </div>
         </div>
-        <div className={Styles.groupBtn} onClick={() => onAddVariant()}>
-          <div className={Styles.btnAdd}>
+        <div className={Styles.groupBtn}>
+          <div className={Styles.btnAdd} onClick={() => onAddVariant()}>
             <BsPlusLg size={10} />
             <p>Add To List</p>
           </div>
         </div>
-        <p className={Styles.titleTableView}>Variant</p>
+
         <div className={Styles.tableView}>
+          <p className={Styles.titleTableView}>Variant</p>
           <Table datas={products} title={titleTable} />
         </div>
         <div className={Styles.groupBtn}>
@@ -289,58 +322,3 @@ function AddVariant(): JSX.Element {
 }
 
 export default memo(AddVariant)
-
-//  <div className={Styles.selectColor}>
-//             <p className={Styles.titleInput}>Select color</p>
-//             <div className={Styles.boxColor}>
-//               {colors.map((item) => (
-//                 <div key={item?.id} className={Styles.itemColor}>
-//                   <label
-//                     className={Styles.colors}
-//                     onClick={() => setCheckColor(item?.color)}
-//                     style={{ backgroundColor: item?.color }}
-//                     htmlFor={item?.id}
-//                   >
-//                     {product.Color.includes(item?.color) && <BsCheck size={18} />}
-//                   </label>
-//                   <input
-//                     type="color"
-//                     id={item?.id}
-//                     style={{ display: 'none' }}
-//                     onChange={(e) => handelOnChangeColor(item?.id, e)}
-//                   />
-//                 </div>
-//               ))}
-//               <div className={Styles.addColor} onClick={() => addColor('#000000')}>
-//                 <label htmlFor="colorchoose">
-//                   <BsPlusLg size={12} />
-//                 </label>
-//               </div>
-//             </div>
-//           </div>
-// set check color
-// const setCheckColor = (color: string) => {
-//   if (product.Color.includes(color)) {
-//     setProduct({
-//       ...product,
-//       Color: [...product.Color.filter((item) => item !== color)]
-//     })
-//   } else {
-//     setProduct({ ...product, Color: [...product.Color, color] })
-//   }
-// }
-
-// add new color
-// const addColor = (color: string) => {
-//   if (!colors.find((e) => e.color === color)) {
-//     setColors([...colors, { id: Date.now().toString(), color: color }])
-//   }
-// }
-
-// // on change color by id
-// const handelOnChangeColor = (id: string, event: React.ChangeEvent<HTMLInputElement>) => {
-//   const arrayColors = colors
-//   const index = arrayColors.findIndex((e) => e.id === id)
-//   arrayColors[index].color = event.target.value
-//   setColors([...arrayColors])
-// }

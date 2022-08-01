@@ -1,0 +1,48 @@
+.selectColor {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.titleInput {
+  justify-self: flex-start;
+}
+.boxColor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.itemColor {
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 0 1px black;
+  border-radius: 100rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  .colors {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    cursor: pointer;
+  }
+}
+
+.addColor {
+  label {
+    border: 1px solid black;
+    padding: 4px;
+    border-radius: 100rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+}

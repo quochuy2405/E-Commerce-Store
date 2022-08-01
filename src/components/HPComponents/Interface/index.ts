@@ -11,8 +11,8 @@ interface SelectKey {
 }
 interface Input {
   id?: string
-  value: string
-  handelChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  value: string | number
+  handelChange: (event: any, name?: string, value?: string | number) => void
   type?: string
   name?: string
   title?: string
@@ -70,6 +70,7 @@ interface Dialog {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   style?: object
+  title?: string
 }
 interface Button {
   handleOnCick?: () => void

@@ -43,4 +43,18 @@ interface DropFile {
   setFileImages: React.Dispatch<React.SetStateAction<FileView[]>>
 }
 
-export type { TreeView, TreeItem, KeyNameTree, TreeItemSwitch, TreeItemAction, DropFile, FileView }
+interface Attribute {
+  Colors: Array<string>
+  Sizes: Array<string>
+}
+
+export type {
+  TreeView,
+  TreeItem,
+  KeyNameTree,
+  TreeItemSwitch,
+  TreeItemAction,
+  DropFile,
+  FileView,
+  Attribute
+}

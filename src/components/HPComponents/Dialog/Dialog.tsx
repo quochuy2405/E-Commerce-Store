@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import type { Dialog as Types } from '../Interface'
 
 function Dialog(props: Types): JSX.Element {
-  const { children, style, open, setOpen } = props
+  const { children, style, open, setOpen, title } = props
 
   return (
     <>
@@ -15,7 +15,14 @@ function Dialog(props: Types): JSX.Element {
         className={`${Styles.dialog} ${!open && Styles.close} ${open && Styles.open}`}
         style={style}
       >
-        {children}
+        {open && (
+          <>
+            <div className={Styles.title}>
+              <p>{title || ''}</p>
+            </div>
+            {children}
+          </>
+        )}
       </div>
     </>
   )

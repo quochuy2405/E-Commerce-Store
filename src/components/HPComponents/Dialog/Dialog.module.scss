@@ -3,12 +3,12 @@
 
 @keyframes close {
   0% {
-    width: 40vw;
-    height: 40vh;
+    width: 50vw;
+    height: 80vh;
   }
   80% {
-    width: 41vw;
-    height: 41vh;
+    width: 51vw;
+    height: 81vh;
   }
   100% {
     width: 0;
@@ -23,19 +23,21 @@
     display: none;
   }
   80% {
-    width: 41vw;
-    height: 41vh;
+    width: 51vw;
+    height: 81vh;
   }
   100% {
-    width: 40vw;
-    height: 40vh;
+    width: 50vw;
+    height: 80vh;
+    overflow: scroll;
   }
 }
 .dialog {
   @include paperBlank;
-  width: 40vw;
-  height: 40vh;
+  width: 50vw;
+  height: 80vh;
   position: absolute;
+
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -45,13 +47,13 @@
   transition: all linear 0.2s;
   &.open {
     animation-name: open;
-    animation-duration: 0.3s;
+    animation-duration: 0.1s;
     animation-fill-mode: forwards;
     visibility: visible;
   }
   &.close {
     animation-name: close;
-    animation-duration: 0.3s;
+    animation-duration: 0.1s;
     animation-fill-mode: forwards;
     box-shadow: none;
     visibility: hidden;
@@ -75,4 +77,11 @@
     visibility: visible;
     transition: all linear 0.2s;
   }
+}
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  color: var(--color-main);
 }
