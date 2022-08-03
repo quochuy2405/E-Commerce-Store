@@ -1,7 +1,6 @@
 import DropFile from '@/components/DropFile'
 import { Dialog, StatusTag, Table } from '@/components/HPComponents'
 import { InputAbove, InputNumber } from '@/components/HPComponents/Input'
-import { KeyValue } from '@/components/HPComponents/Interface'
 import { SelectAbove, SelectColor } from '@/components/HPComponents/Select'
 import { TextAreaAbove } from '@/components/HPComponents/TextArea'
 import type { FileView } from '@/components/Interface'
@@ -29,7 +28,8 @@ const titleTable = [
   'Description',
   'Price',
   'Quantity',
-  'Size'
+  'Size',
+  'Color'
 ]
 
 function AddVariant(): JSX.Element {
@@ -111,7 +111,7 @@ function AddVariant(): JSX.Element {
         title={'Add Attribute'}
         open={openAttribute}
         setOpen={setOpenAttribute}
-        style={{ padding: '30px 100px' }}
+        style={{ padding: '30px 50px' }}
       >
         <AddAtrribute />
       </Dialog>
@@ -204,7 +204,7 @@ function AddVariant(): JSX.Element {
                 }}
                 invalid={validate.Description}
                 isRequired={true}
-                row={12}
+                row={14}
               />
             </div>
           </div>
@@ -237,7 +237,7 @@ function AddVariant(): JSX.Element {
                 value={product?.Color}
                 handelChange={onChangeData}
                 name="Size"
-                title="Select Size"
+                title="Select Color"
                 data={[
                   {
                     key: '1',
@@ -262,6 +262,7 @@ function AddVariant(): JSX.Element {
                   textInvalid="Nhập tên sản phẩm"
                   key="Price"
                   title="Price"
+                  unit="VND"
                   handelChange={(e) => {
                     onChangeData(e, 'Name')
                   }}
@@ -304,7 +305,7 @@ function AddVariant(): JSX.Element {
 
         <div className={Styles.tableView}>
           <p className={Styles.titleTableView}>Variant</p>
-          <Table datas={products} title={titleTable} />
+          <Table datas={products} title={titleTable} limit={1} />
         </div>
         <div className={Styles.groupBtn}>
           <div className={Styles.btnAdd}>

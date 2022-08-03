@@ -40,21 +40,20 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 15px;
   flex-direction: column;
 }
 .Description,
 .SelectSize,
-.Price {
+.Price,
+.Size {
   flex: 1;
 }
-.Size {
-  flex: 0.5;
-}
+
 .Price,
 .Size {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 10px;
   flex-direction: column;
 }

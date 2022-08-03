@@ -1,5 +1,5 @@
 .SelectBox {
-  margin-bottom: 15px;
+  width: 100%;
 }
 .invalid {
   font-size: 0.7rem;
@@ -19,7 +19,6 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 4px 0;
 }
 .isRequired {
   color: rgb(187, 187, 187);

@@ -5,13 +5,22 @@
   flex-direction: column;
 }
 .titleInput {
-  justify-self: flex-start;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+.isRequired {
+  color: rgb(187, 187, 187);
+}
+
 .boxColor {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  height: 34px;
 }
 .itemColor {
   width: 20px;

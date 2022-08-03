@@ -1,5 +1,5 @@
-import type { Attribute } from '@/components/Interface'
-import React, { useState } from 'react'
+import { Tooltip, Zoom } from '@mui/material'
+import { AiFillInfoCircle } from 'react-icons/ai'
 import { BsCheck } from 'react-icons/bs'
 import type { SelectColor as Types } from '../../Interface'
 import Styles from './SelectColor.module.scss'
@@ -14,7 +14,42 @@ function SelectColor(props: Types): JSX.Element {
   return (
     <div>
       <div className={Styles.selectColor}>
-        <p className={Styles.titleInput}>Select color</p>
+        <p className={Styles.titleInput}>
+          {props?.title}
+          {props?.isRequired && (
+            <Tooltip
+              arrow
+              className={Styles?.isRequired}
+              placement="right"
+              TransitionComponent={Zoom}
+              title={props?.toolTip || 'a'}
+              componentsProps={{
+                arrow: {
+                  sx: {
+                    bgcolor: 'common.white',
+                    '& .MuiTooltip-arrow': {
+                      color: '#E6E8ED'
+                    }
+                  }
+                },
+                tooltip: {
+                  sx: {
+                    border: '1px solid var(--color-main)',
+                    bgcolor: 'common.white',
+                    '& .MuiTooltip-arrow': {
+                      color: 'var(--color-main)'
+                    },
+                    color: 'common.black'
+                  }
+                }
+              }}
+            >
+              <span>
+                <AiFillInfoCircle />
+              </span>
+            </Tooltip>
+          )}
+        </p>
         <div className={Styles.boxColor}>
           {props?.data.map((item) => (
             <div key={item?.key?.toString()} className={Styles.itemColor}>

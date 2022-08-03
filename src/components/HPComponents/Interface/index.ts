@@ -22,6 +22,7 @@ interface Input {
   isRequired?: boolean
   className?: string | unknown
   toolTip?: string
+  unit?: string
 }
 
 interface Select {
@@ -65,7 +66,7 @@ interface InputColor {
   type?: string
   setColor: (id: string, event: React.ChangeEvent<HTMLInputElement>) => void
   checkList: string[]
-  className: string
+  className?: string | unknown
 }
 
 interface TextArea {
@@ -77,11 +78,14 @@ interface TextArea {
   textInvalid?: string
   isRequired?: boolean
   row?: number
+  className?: string | unknown
 }
 
 interface Table {
-  datas?: Array<object>
+  datas: Array<object>
   title: string[]
+  limit?: number
+  className?: string | unknown
 }
 
 interface Dialog {
@@ -90,33 +94,39 @@ interface Dialog {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   style?: object
   title?: string
+  className?: string | unknown
 }
 interface Button {
   handleOnCick?: () => void
   name?: string
   width?: string
   height?: string
+  className?: string | unknown
 }
 
 interface StatusTag {
   title: string
   type: 'success' | 'error' | 'warning'
+  className?: string | unknown
 }
 
 interface Icon {
   image: string
   size: number
+  className?: string | unknown
 }
 interface Chart {
   data?: Array<number>
   type: 'bar' | 'line' | 'dou'
   size: number
+  className?: string | unknown
 }
 
 interface GroupButtonChart {
   icon: React.ReactElement
   tooltip: string
   name: 'bar' | 'line' | 'dou'
+  className?: string | unknown
 }
 
 export type {

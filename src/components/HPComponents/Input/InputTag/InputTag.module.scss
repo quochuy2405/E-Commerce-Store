@@ -1,12 +1,13 @@
 .Tag {
   background-color: var(--color-main);
-  padding: 3px 10px;
+
+  padding: 3px 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   border-radius: 2px;
   gap: 6px;
 }
@@ -16,12 +17,13 @@
   align-items: center;
 
   padding: 5px;
-  box-shadow: 0 0 0 1px black;
-  gap: 10px;
-  height: 300px;
-  overflow: scroll;
+  box-shadow: 0 0 0 1px #b3b3b3d1;
+  border-radius: 2px;
+  width: 100%;
+  min-height: 36px;
 
   ul {
+    flex: 1.5;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -30,6 +32,11 @@
     flex-wrap: wrap;
     gap: 10px;
     padding: 0;
+  }
+  input {
+    flex: 1;
+    width: 100%;
+    font-size: 0.9rem;
   }
 }
 .Close {

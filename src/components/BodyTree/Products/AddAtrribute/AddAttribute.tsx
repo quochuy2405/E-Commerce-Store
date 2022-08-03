@@ -3,6 +3,13 @@ import Styles from '@/components/BodyTree/Products/AddAtrribute/AddAttribute.mod
 import type { Attribute } from '@/components/Interface'
 import { BsCheck, BsPlusLg } from 'react-icons/bs'
 import { InputTag } from '@/components/HPComponents/Input'
+import { SelectAbove } from '@/components/HPComponents/Select'
+
+const sizesByText = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
 
 function AddAttribute() {
   const [colors, setColors] = useState([
@@ -41,35 +48,88 @@ function AddAttribute() {
     arrayColors[index].color = event.target.value
     setColors([...arrayColors])
   }
+
   return (
-    <div>
-      <InputTag />
-      <div className={Styles.selectColor}>
-        <p className={Styles.titleInput}>Select color</p>
-        <div className={Styles.boxColor}>
-          {colors.map((item) => (
-            <div key={item?.id} className={Styles.itemColor}>
-              <label
-                className={Styles.colors}
-                onClick={() => setCheckColor(item?.color)}
-                style={{ backgroundColor: item?.color }}
-                htmlFor={item?.id}
-              >
-                {attributes.Colors.includes(item?.color) && <BsCheck size={18} />}
-              </label>
-              <input
-                type="color"
-                id={item?.id}
-                style={{ display: 'none' }}
-                onChange={(e) => handelOnChangeColor(item?.id, e)}
-              />
-            </div>
-          ))}
-          <div className={Styles.addColor} onClick={() => addColor('#000000')}>
-            <label htmlFor="colorchoose">
-              <BsPlusLg size={12} />
-            </label>
+    <div className={Styles.attribute}>
+      <div className={Styles.inputFrom}>
+        <div className={Styles.inputAttribute}>
+          <div className={Styles.numberAttribute}>
+            <p>1</p>
           </div>
+          <SelectAbove
+            value={sizesByText[0].value}
+            handelChange={(e) => {
+              console.log('ok')
+            }}
+            name="Status"
+            title=""
+            className={Styles.flex1}
+            data={sizesByText}
+            isRequired={false}
+            toolTip="Hãy lựa chọn nếu không có sự lựa chọn hãy tạo thêm"
+          />{' '}
+          <InputTag
+            value={0}
+            handelChange={() => {
+              console.log('')
+            }}
+            className={Styles.flex2}
+          />
+        </div>
+        <div className={Styles.inputAttribute}>
+          <div className={Styles.numberAttribute}>
+            <p>2</p>
+          </div>
+          <SelectAbove
+            value={sizesByText[0].value}
+            handelChange={(e) => {
+              console.log('ok')
+            }}
+            name="Status"
+            title=""
+            className={Styles.flex1}
+            data={sizesByText}
+            isRequired={false}
+            toolTip="Hãy lựa chọn nếu không có sự lựa chọn hãy tạo thêm"
+          />
+          <div className={Styles.boxColor}>
+            {colors.map((item) => (
+              <div key={item?.id} className={Styles.itemColor}>
+                <label
+                  className={Styles.colors}
+                  onClick={() => setCheckColor(item?.color)}
+                  style={{ backgroundColor: item?.color }}
+                  htmlFor={item?.id}
+                >
+                  {attributes.Colors.includes(item?.color) && <BsCheck size={18} />}
+                </label>
+                <input
+                  type="color"
+                  id={item?.id}
+                  onChange={(e) => handelOnChangeColor(item?.id, e)}
+                />
+              </div>
+            ))}
+            <div className={Styles.addColor} onClick={() => addColor('#000000')}>
+              <label htmlFor="colorchoose">
+                <BsPlusLg size={12} />
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className={Styles.inputAttribute}>
+          <div className={Styles.button}>
+            <BsPlusLg size={15} /> <p>More</p>
+          </div>
+        </div>
+      </div>
+
+      <div className={Styles.groupButtonSubmit}>
+        <div className={Styles.buttonSubmit}>
+          <p>Submit</p>
+        </div>
+        <div className={Styles.buttonCancel}>
+          <p>Cancel</p>
         </div>
       </div>
     </div>

@@ -55,7 +55,14 @@ function Input(props: Types): JSX.Element {
         <div className={Styles.btnSetNumber} onClick={() => reduce()}>
           <AiFillCaretLeft size={20} />
         </div>
-        <input ref={refInput} value={props?.value} type={'number'} name={props?.name} min={0} />
+        <input
+          readOnly
+          ref={refInput}
+          value={props?.value}
+          type={'number'}
+          name={props?.name}
+          min={0}
+        />
         <div className={Styles.btnSetNumber} onClick={() => increase()}>
           <AiFillCaretRight size={20} />
         </div>
