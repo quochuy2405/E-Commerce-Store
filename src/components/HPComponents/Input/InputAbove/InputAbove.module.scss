@@ -5,7 +5,9 @@
   display: flex;
   align-items: center;
   background-color: #ffffff;
-  margin-bottom: 5px;
+  margin-bottom: 9px;
+  position: relative;
+
   border: none;
   & input {
     width: 100%;
@@ -19,8 +21,8 @@
 .invalid {
   font-size: 0.7rem;
   color: #ff2b2b;
+  bottom: -17px;
   position: absolute;
-  bottom: -15px;
   display: block;
 }
 .inputBox {

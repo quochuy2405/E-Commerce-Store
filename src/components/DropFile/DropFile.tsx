@@ -9,7 +9,7 @@ import type { DropFile as Types } from '../Interface'
 
 function DropFile(props: Types) {
   const { enqueueSnackbar } = useSnackbar()
-  const { fileImages, setFileImages, size, index } = props
+  const { fileImages, setFileImages, size, index, width, height } = props
 
   // set up drop
   const onDrop = (acceptedFiles: File[]) => {
@@ -50,7 +50,7 @@ function DropFile(props: Types) {
   }
 
   return (
-    <div className={Styles.DropImage}>
+    <div className={Styles.DropImage} style={{ width: `${width}%`, height: `${height}%` }}>
       <div className={Styles.viewImage}>
         <div className={Styles.Image}>
           <RiCloseCircleFill

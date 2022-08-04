@@ -41,6 +41,10 @@ const Products: Array<KeyNameTree> = [
 ]
 const Order: Array<KeyNameTree> = [
   {
+    name: 'Category',
+    key: 'category'
+  },
+  {
     name: 'Check Out',
     key: 'checkout'
   },

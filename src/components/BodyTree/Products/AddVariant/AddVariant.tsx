@@ -73,9 +73,9 @@ function AddVariant(): JSX.Element {
     name?: string,
     value?: string | number
   ) => {
-    console.log(value)
     const keyName = name || event.target.name
     const keyValue = value?.toString() || event.value || event.target.value
+
     setProduct({ ...product, [keyName]: keyValue })
     setValidate({ ...validate, [keyName]: !keyValue })
   }
@@ -115,8 +115,8 @@ function AddVariant(): JSX.Element {
       >
         <AddAtrribute />
       </Dialog>
-      <div className={Styles.Bar}>
-        <div className={Styles.RouteLink}>
+      <div className={Styles.bar}>
+        <div className={Styles.routeLink}>
           <StatusTag title={'admin'} type={'success'} />
           {slug && <FcNext />}
           <StatusTag title={slug?.toString() || ''} type={'warning'} />
@@ -192,7 +192,7 @@ function AddVariant(): JSX.Element {
                 isRequired={true}
               />
             </div>
-            <div className={Styles.Description}>
+            <div className={Styles.description}>
               <TextAreaAbove
                 value={product.Description}
                 name="Description"
@@ -220,7 +220,7 @@ function AddVariant(): JSX.Element {
             ))}
           </div>
           <div className={Styles.groupTypeText}>
-            <div className={Styles.Size}>
+            <div className={Styles.size}>
               <SelectAbove
                 value={product?.Size}
                 handelChange={(e) => {
@@ -253,8 +253,8 @@ function AddVariant(): JSX.Element {
                 toolTip="Hãy lựa chọn nếu không có sự lựa chọn hãy tạo thêm"
               />
             </div>
-            <div className={Styles.Price}>
-              <div className={Styles.Flex}>
+            <div className={Styles.price}>
+              <div className={Styles.flex}>
                 <InputAbove
                   value={product?.Name}
                   type="number"
@@ -297,7 +297,7 @@ function AddVariant(): JSX.Element {
           </div>
         </div>
         <div className={Styles.groupBtn}>
-          <div className={Styles.btnAdd} onClick={() => onAddVariant()}>
+          <div className={Styles.btnAddVariant} onClick={() => onAddVariant()}>
             <BsPlusLg size={10} />
             <p>Add To List</p>
           </div>
@@ -307,12 +307,12 @@ function AddVariant(): JSX.Element {
           <p className={Styles.titleTableView}>Variant</p>
           <Table datas={products} title={titleTable} limit={1} />
         </div>
-        <div className={Styles.groupBtn}>
-          <div className={Styles.btnAdd}>
+        <div className={Styles.groupButtons}>
+          <div className={Styles.buttonSubmit}>
             <BsPlusLg size={10} />
             <p>Add</p>
           </div>
-          <div className={Styles.btnCancel}>
+          <div className={Styles.buttonCancel}>
             <p>Cancel</p>
           </div>
         </div>

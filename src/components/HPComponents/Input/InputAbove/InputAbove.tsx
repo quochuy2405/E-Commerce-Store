@@ -40,11 +40,10 @@ function Input(props: Types): JSX.Element {
           onChange={(e) => props?.handelChange(e)}
         />
         <p className={Styles.unit}>{props?.unit}</p>
+        {props?.invalid && props?.isRequired && (
+          <span className={Styles.invalid}>{props?.textInvalid}</span>
+        )}
       </fieldset>
-
-      {props?.invalid && props?.isRequired && (
-        <span className={Styles.invalid}>{props?.textInvalid}</span>
-      )}
     </div>
   )
 }

@@ -124,7 +124,7 @@ function AddAttribute() {
         </div>
       </div>
 
-      <div className={Styles.groupButtonSubmit}>
+      <div className={Styles.groupButtons}>
         <div className={Styles.buttonSubmit}>
           <p>Submit</p>
         </div>

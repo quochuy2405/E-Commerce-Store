@@ -97,9 +97,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
 }
-.groupButtonSubmit {
+.groupButtons {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,7 +107,7 @@
 
 .buttonSubmit {
   @include button;
-  background-color: var(--color-blue);
+  background-color: var(--color-main);
   box-shadow: none;
 }
 .inputFrom {

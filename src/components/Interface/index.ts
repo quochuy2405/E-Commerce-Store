@@ -41,6 +41,8 @@ interface DropFile {
   size: number
   fileImages: FileView[]
   setFileImages: React.Dispatch<React.SetStateAction<FileView[]>>
+  width?: number
+  height?: number
 }
 
 interface Attribute {

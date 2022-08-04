@@ -1,8 +1,9 @@
 @use '../../../HPComponents/layouts/common' as *;
 
-.addVariant {
+.addCategory {
   @include paperBlank;
   width: 100%;
+  height: 100%;
   overflow: scroll;
   border-radius: 4px;
 
@@ -21,71 +22,33 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
 }
+.flex1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  height: 100%;
+  flex: 1;
+}
+
+.titleUpload {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0 5px;
+}
 
 .formInput {
+  display: flex;
+  align-items: center;
   width: 100%;
-  padding-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.groupTypeText {
-  width: 90%;
-  gap: 100px;
-  display: flex;
-  justify-content: center;
-}
-.textShort {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-direction: column;
-}
-.description,
-.selectSize,
-.price,
-.size {
-  flex: 1;
-}
+  height: 60%;
 
-.price,
-.size {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  flex-direction: column;
-}
-.flex {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0 10px;
-}
-
-.groupTypeSpeacial {
-  display: grid;
-  width: 90%;
-  padding: 20px 0;
-  grid-template-areas:
-    'h1 h1 h2 h4'
-    'h1 h1 h3 h5';
-  grid-template-rows: 180px;
-  gap: 20px;
-  grid-template-columns: 20%;
-  @for $i from 0 through 5 {
-    & > div:nth-child(#{$i}) {
-      grid-area: h +#{$i};
-    }
-  }
+  gap: 50px;
 }
 
 .buttonSubmit,
 .buttonCancel {
   @include button-line;
-
   gap: 5px;
   width: 200px;
   font-size: 1rem;
@@ -94,6 +57,7 @@
   align-items: center;
 }
 .groupButtons {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,17 +69,6 @@
   background-color: var(--color-main);
   box-shadow: none;
 }
-.titleTableView {
-  font-size: 1.1rem;
-  font-weight: 600;
-  align-self: flex-start;
-}
-.tableView {
-  width: 90%;
-  margin: 0 auto;
-  position: relative;
-}
-
 .bar {
   @include paperBlank;
   width: 100%;
@@ -133,8 +86,4 @@
     justify-content: center;
     align-items: center;
   }
-}
-.btnAddVariant {
-  @include button;
-  width: fit-content;
 }
