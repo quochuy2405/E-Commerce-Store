@@ -1,3 +1,3 @@
-export { default as AddProduct } from './AddVariant'
-export { default as Overview } from './Overview'
+export { default as AddVariant } from './AddVariant'
+export { default as AddAttribute } from './AddAttribute'
 export { default } from './Overview'

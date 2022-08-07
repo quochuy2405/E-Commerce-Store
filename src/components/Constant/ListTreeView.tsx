@@ -4,12 +4,18 @@ import { BsCart4 } from 'react-icons/bs'
 import { IoStorefrontOutline } from 'react-icons/io5'
 import { MdOutlineAccountBox, MdOutlineDashboard, MdOutlineSwitchAccount } from 'react-icons/md'
 import { TbTruckDelivery } from 'react-icons/tb'
-import { DashBoard, User as BodyUser } from '../BodyTree'
-import { Overview as CategoryOverview } from '../BodyTree/Categories'
-import { Overview } from '../BodyTree/Products'
+import {
+  Customers,
+  DashBoard,
+  Categories,
+  Products as ProductOverview,
+  Revenue,
+  Stores,
+  Accounts
+} from '../BodyTree'
 
 import type { TreeView } from '../Interface'
-import { Category as CategoryKey, Home, Order, Products, User } from './ListTreeItemKey'
+import { Category as CategoryKey, Home, Order, Product, User, Store } from './ListTreeItemKey'
 
 // list review will be render main tag for each object
 const ListTreeView: Array<TreeView> = [
@@ -31,18 +37,18 @@ const ListTreeView: Array<TreeView> = [
     nameTree: 'Order',
     itemLinks: Order,
     icon: <TbTruckDelivery size={18} />,
-    body: <p>Over view Order</p>
+    body: <ProductOverview />
   },
 
   {
     link: '/admin/product',
     treeKey: 'product',
-    sizeItem: Products?.length,
+    sizeItem: Product?.length,
     titleTree: 'Manage Products',
     nameTree: 'Products',
-    itemLinks: Products,
+    itemLinks: Product,
     icon: <BsCart4 size={18} />,
-    body: <Overview />
+    body: <ProductOverview />
   },
   {
     link: '/admin/customer',
@@ -52,7 +58,7 @@ const ListTreeView: Array<TreeView> = [
     nameTree: 'Customer',
     itemLinks: User,
     icon: <MdOutlineAccountBox size={18} />,
-    body: <BodyUser />
+    body: <Customers />
   },
   {
     link: '/admin/category',
@@ -62,7 +68,7 @@ const ListTreeView: Array<TreeView> = [
     nameTree: 'Category',
     itemLinks: CategoryKey,
     icon: <BiCategoryAlt size={18} />,
-    body: <CategoryOverview />
+    body: <Categories />
   },
   {
     link: '/admin/revenue',
@@ -72,17 +78,17 @@ const ListTreeView: Array<TreeView> = [
     nameTree: 'Revenue',
     itemLinks: Order,
     icon: <BiLineChart size={18} />,
-    body: <p>Order2</p>
+    body: <Revenue />
   },
   {
     link: '/admin/store',
     treeKey: 'store',
-    sizeItem: Order?.length,
+    sizeItem: Store?.length,
     titleTree: 'Manage Store',
     nameTree: 'Store',
-    itemLinks: Order,
+    itemLinks: Store,
     icon: <IoStorefrontOutline size={18} />,
-    body: <p>Order2</p>
+    body: <Stores />
   },
   {
     link: '/admin/account',
@@ -92,7 +98,7 @@ const ListTreeView: Array<TreeView> = [
     nameTree: 'Account',
     itemLinks: Order,
     icon: <MdOutlineSwitchAccount size={18} />,
-    body: <p>Order2</p>
+    body: <Accounts />
   },
   {
     link: '/admin/setting',

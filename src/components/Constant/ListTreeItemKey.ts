@@ -10,6 +10,17 @@ const Home: Array<KeyNameTree> = [
     key: 'promotion'
   }
 ]
+
+const Store: Array<KeyNameTree> = [
+  {
+    name: 'Stores',
+    key: 'list'
+  },
+  {
+    name: 'Add Store',
+    key: 'add'
+  }
+]
 const User: Array<KeyNameTree> = [
   {
     name: 'Accounts',
@@ -21,7 +32,7 @@ const User: Array<KeyNameTree> = [
   }
 ]
 
-const Products: Array<KeyNameTree> = [
+const Product: Array<KeyNameTree> = [
   {
     name: 'Add Product',
     key: 'add'
@@ -63,4 +74,4 @@ const Category: Array<KeyNameTree> = [
     key: 'add'
   }
 ]
-export { Home, User, Order, Products, Category }
+export { Home, User, Order, Product, Category, Store }

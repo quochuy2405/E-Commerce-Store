@@ -6,7 +6,7 @@ import Styles from '@/components/Bar/Bar.module.scss'
 import type { Bar as Types } from '../Interface'
 
 function Bar(props: Types): JSX.Element {
-  const { slug, opt } = useParams()
+  const { slug, opt, action } = useParams()
   return (
     <div className={Styles.bar}>
       <div className={Styles.routeLink}>
@@ -22,6 +22,13 @@ function Bar(props: Types): JSX.Element {
           <>
             <FcNext />
             <StatusTag title={opt?.toString() || ''} type={'error'} />
+          </>
+        )}
+
+        {action && (
+          <>
+            <FcNext />
+            <StatusTag title={action?.toString() || ''} type={'success'} />
           </>
         )}
       </div>

@@ -1,0 +1,13 @@
+@use '../../../HPComponents/layouts/common' as *;
+
+.btnAddAtribute {
+  @include button;
+  width: fit-content;
+}
+.categories {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}

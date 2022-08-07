@@ -11,7 +11,7 @@ import { BsPlusLg } from 'react-icons/bs'
 import { FcNext } from 'react-icons/fc'
 import { useParams } from 'react-router-dom'
 import type { SingleValue } from 'react-select'
-import AddAtrribute from '../AddAtrribute'
+import AddAttribute from '../AddAttribute'
 import Styles from './AddVariant.module.scss'
 
 const sizesByText = [
@@ -113,7 +113,7 @@ function AddVariant(): JSX.Element {
         setOpen={setOpenAttribute}
         style={{ padding: '30px 50px' }}
       >
-        <AddAtrribute />
+        <AddAttribute />
       </Dialog>
       <div className={Styles.bar}>
         <div className={Styles.routeLink}>

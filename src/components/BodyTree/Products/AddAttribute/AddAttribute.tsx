@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Styles from '@/components/BodyTree/Products/AddAtrribute/AddAttribute.module.scss'
+import Styles from '@/components/BodyTree/Products/AddAttribute/AddAttribute.module.scss'
 import type { Attribute } from '@/components/Interface'
 import { BsCheck, BsPlusLg } from 'react-icons/bs'
 import { InputTag } from '@/components/HPComponents/Input'
