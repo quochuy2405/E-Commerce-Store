@@ -8,7 +8,7 @@ import Switch from '@/components/Switch'
 import { useState } from 'react'
 import { BsPlusLg } from 'react-icons/bs'
 
-function AddCategory() {
+function AddCategory(): JSX.Element {
   const [isParent, setIsParent] = useState(false)
   const [fileImages, setFileImages] = useState<Array<FileView>>([])
 

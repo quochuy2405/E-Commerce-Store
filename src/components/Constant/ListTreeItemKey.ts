@@ -27,8 +27,8 @@ const Products: Array<KeyNameTree> = [
     key: 'add'
   },
   {
-    name: 'Product Details',
-    key: 'details'
+    name: 'Product List',
+    key: 'list'
   },
   {
     name: 'Manager Types',
@@ -59,8 +59,8 @@ const Order: Array<KeyNameTree> = [
 ]
 const Category: Array<KeyNameTree> = [
   {
-    name: 'Category',
-    key: 'list'
+    name: 'Add Category',
+    key: 'add'
   }
 ]
 export { Home, User, Order, Products, Category }

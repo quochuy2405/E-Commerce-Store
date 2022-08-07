@@ -11,7 +11,7 @@ const sizesByText = [
   { value: 'vanilla', label: 'Vanilla' }
 ]
 
-function AddAttribute() {
+function AddAttribute(): JSX.Element {
   const [colors, setColors] = useState([
     {
       id: '1',

@@ -6,8 +6,10 @@ import { MdOutlineAccountBox, MdOutlineDashboard, MdOutlineSwitchAccount } from 
 import { TbTruckDelivery } from 'react-icons/tb'
 import { DashBoard, User as BodyUser } from '../BodyTree'
 import { Overview as CategoryOverview } from '../BodyTree/Categories'
+import { Overview } from '../BodyTree/Products'
+
 import type { TreeView } from '../Interface'
-import { Category, Home, Order, Products, User } from './ListTreeItemKey'
+import { Category as CategoryKey, Home, Order, Products, User } from './ListTreeItemKey'
 
 // list review will be render main tag for each object
 const ListTreeView: Array<TreeView> = [
@@ -40,7 +42,7 @@ const ListTreeView: Array<TreeView> = [
     nameTree: 'Products',
     itemLinks: Products,
     icon: <BsCart4 size={18} />,
-    body: <BodyUser />
+    body: <Overview />
   },
   {
     link: '/admin/customer',
@@ -55,10 +57,10 @@ const ListTreeView: Array<TreeView> = [
   {
     link: '/admin/category',
     treeKey: 'category',
-    sizeItem: Category?.length,
+    sizeItem: CategoryKey?.length,
     titleTree: 'Manage Category',
     nameTree: 'Category',
-    itemLinks: Category,
+    itemLinks: CategoryKey,
     icon: <BiCategoryAlt size={18} />,
     body: <CategoryOverview />
   },
