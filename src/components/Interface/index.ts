@@ -56,6 +56,9 @@ interface Switch {
   check: boolean
 }
 
+interface Bar {
+  children?: React.ReactElement<any, any>
+}
 export type {
   TreeView,
   TreeItem,
@@ -65,5 +68,6 @@ export type {
   DropFile,
   FileView,
   Attribute,
-  Switch
+  Switch,
+  Bar
 }

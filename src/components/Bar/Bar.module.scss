@@ -1,0 +1,20 @@
+@use '../HPComponents/layouts/common' as *;
+
+.bar {
+  @include paperBlank;
+  width: 100%;
+  height: 50px;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  .routeLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

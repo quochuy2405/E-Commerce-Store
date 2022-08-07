@@ -57,4 +57,10 @@ const Order: Array<KeyNameTree> = [
     key: 'delivery'
   }
 ]
-export { Home, User, Order, Products }
+const Category: Array<KeyNameTree> = [
+  {
+    name: 'Category',
+    key: 'list'
+  }
+]
+export { Home, User, Order, Products, Category }

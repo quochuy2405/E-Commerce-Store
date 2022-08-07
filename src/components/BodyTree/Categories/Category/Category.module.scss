@@ -1,0 +1,6 @@
+@use '../../../HPComponents/layouts/common' as *;
+
+.btnAddAtribute {
+  @include button;
+  width: fit-content;
+}

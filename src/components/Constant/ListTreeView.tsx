@@ -1,17 +1,13 @@
-import {
-  MdOutlineAccountBox,
-  MdOutlineAssignment,
-  MdOutlineDashboard,
-  MdOutlineSwitchAccount
-} from 'react-icons/md'
-import { BsFillCreditCard2FrontFill, BsCart4 } from 'react-icons/bs'
-import { TbTruckDelivery } from 'react-icons/tb'
-import { BiCategoryAlt, BiLineChart } from 'react-icons/bi'
-import { DashBoard, User as BodyUser } from '../BodyTree'
-import type { TreeView } from '../Interface'
-import { Home, Order, Products, User } from './ListTreeItemKey'
-import { IoStorefrontOutline } from 'react-icons/io5'
 import { AiOutlineSetting } from 'react-icons/ai'
+import { BiCategoryAlt, BiLineChart } from 'react-icons/bi'
+import { BsCart4 } from 'react-icons/bs'
+import { IoStorefrontOutline } from 'react-icons/io5'
+import { MdOutlineAccountBox, MdOutlineDashboard, MdOutlineSwitchAccount } from 'react-icons/md'
+import { TbTruckDelivery } from 'react-icons/tb'
+import { DashBoard, User as BodyUser } from '../BodyTree'
+import { Overview as CategoryOverview } from '../BodyTree/Categories'
+import type { TreeView } from '../Interface'
+import { Category, Home, Order, Products, User } from './ListTreeItemKey'
 
 // list review will be render main tag for each object
 const ListTreeView: Array<TreeView> = [
@@ -59,12 +55,12 @@ const ListTreeView: Array<TreeView> = [
   {
     link: '/admin/category',
     treeKey: 'category',
-    sizeItem: Order?.length,
+    sizeItem: Category?.length,
     titleTree: 'Manage Category',
     nameTree: 'Category',
-    itemLinks: Order,
+    itemLinks: Category,
     icon: <BiCategoryAlt size={18} />,
-    body: <p>Order</p>
+    body: <CategoryOverview />
   },
   {
     link: '/admin/revenue',

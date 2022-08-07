@@ -1,4 +1,4 @@
-import { AddCategory } from '../BodyTree/Categories'
+import { AddCategory, Category } from '../BodyTree/Categories'
 import { AddProduct } from '../BodyTree/Products'
 import { Table } from '../HPComponents'
 import type { TreeItemSwitch } from '../Interface'
@@ -17,8 +17,8 @@ const ListTreeItem: Array<TreeItemSwitch> = [
   { parentURL: 'customer', opt: 'accounts', body: <AddProduct /> },
   { parentURL: 'customer', opt: 'checkout', body: <>Tree checkout</> },
   { parentURL: 'customer', opt: 'type', body: <>Tree type</> },
-  { parentURL: 'category', opt: 'category', body: <AddCategory /> },
-  { parentURL: 'category', opt: 'accounts', body: <AddProduct /> },
+  { parentURL: 'category', opt: 'list', body: <Category /> },
+  { parentURL: 'category', opt: 'add', body: <AddCategory /> },
   { parentURL: 'category', opt: 'checkout', body: <>Tree checkout</> },
   { parentURL: 'category', opt: 'type', body: <>Tree type</> },
   { parentURL: 'user', opt: 'expired', body: <>Tree expired</> }

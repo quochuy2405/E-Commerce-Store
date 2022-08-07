@@ -1,38 +1,19 @@
-import DropFile from '@/components/DropFile'
+import Bar from '@/components/Bar'
 import Styles from '@/components/BodyTree/Categories/AddCategory/AddCategory.module.scss'
+import DropFile from '@/components/DropFile'
 import { InputAbove } from '@/components/HPComponents/Input'
-import type { FileView } from '@/components/Interface'
-import { useEffect, useState } from 'react'
-import { BsPlusLg } from 'react-icons/bs'
-import { StatusTag } from '@/components/HPComponents'
-import { FcNext } from 'react-icons/fc'
-import { useParams } from 'react-router-dom'
-import Switch from '@/components/Switch'
 import { SelectAbove } from '@/components/HPComponents/Select'
+import type { FileView } from '@/components/Interface'
+import Switch from '@/components/Switch'
+import { useState } from 'react'
+import { BsPlusLg } from 'react-icons/bs'
 
 function AddCategory() {
-  const { slug, opt } = useParams()
   const [isParent, setIsParent] = useState(false)
   const [fileImages, setFileImages] = useState<Array<FileView>>([])
 
-  useEffect(() => {
-    console.log(isParent)
-  }, [isParent])
-
   return (
     <>
-      <div className={Styles.bar}>
-        <div className={Styles.routeLink}>
-          <StatusTag title={'admin'} type={'success'} />
-          {slug && <FcNext />}
-          <StatusTag title={slug?.toString() || ''} type={'warning'} />
-          {opt && <FcNext />}
-          <StatusTag title={opt?.toString() || ''} type={'error'} />
-        </div>
-        <div className={Styles.btnAddVariant}>
-          <p>Add Attribute</p>
-        </div>
-      </div>
       <div className={Styles.addCategory}>
         <div className={Styles.formInput}>
           <div className={Styles.flex1}>
