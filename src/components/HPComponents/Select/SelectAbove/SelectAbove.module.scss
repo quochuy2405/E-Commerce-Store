@@ -12,12 +12,17 @@
   width: 100%;
   height: fit-content;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .title {
   font-size: 0.9rem;
   font-weight: 500;
   display: flex;
   align-items: center;
+
   gap: 10px;
 }
 .isRequired {

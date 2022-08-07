@@ -2,15 +2,22 @@ import DropFile from '@/components/DropFile'
 import Styles from '@/components/BodyTree/Categories/AddCategory/AddCategory.module.scss'
 import { InputAbove } from '@/components/HPComponents/Input'
 import type { FileView } from '@/components/Interface'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BsPlusLg } from 'react-icons/bs'
 import { StatusTag } from '@/components/HPComponents'
 import { FcNext } from 'react-icons/fc'
 import { useParams } from 'react-router-dom'
+import Switch from '@/components/Switch'
+import { SelectAbove } from '@/components/HPComponents/Select'
 
 function AddCategory() {
   const { slug, opt } = useParams()
+  const [isParent, setIsParent] = useState(false)
   const [fileImages, setFileImages] = useState<Array<FileView>>([])
+
+  useEffect(() => {
+    console.log(isParent)
+  }, [isParent])
 
   return (
     <>
@@ -35,51 +42,39 @@ function AddCategory() {
               name="Name"
               textInvalid="Nhập tên sản phẩm"
               key="Name"
-              title="Product Name"
+              title="Category Name"
               handelChange={(e) => {
                 console.log('')
               }}
               invalid={true}
-              isRequired={true}
+              isRequired={false}
             />
-            <InputAbove
+
+            <SelectAbove
               value={''}
-              type="text"
-              name="Name"
-              textInvalid="Nhập tên sản phẩm"
-              key="Name"
-              title="Product Name"
               handelChange={(e) => {
-                console.log('')
+                console.log('ok')
               }}
-              invalid={true}
-              isRequired={true}
+              name="Parent"
+              title={
+                <>
+                  Parent Category <Switch check={isParent} setCheck={setIsParent} />
+                </>
+              }
+              data={[]}
+              isRequired={false}
+              toolTip="Hãy lựa chọn nếu không có sự lựa chọn hãy tạo thêm"
             />
-            <InputAbove
+            <SelectAbove
               value={''}
-              type="text"
-              name="Name"
-              textInvalid="Nhập tên sản phẩm"
-              key="Name"
-              title="Product Name"
               handelChange={(e) => {
-                console.log('')
+                console.log('ok')
               }}
-              invalid={true}
-              isRequired={true}
-            />
-            <InputAbove
-              value={''}
-              type="text"
-              name="Name"
-              textInvalid="Nhập tên sản phẩm"
-              key="Name"
-              title="Product Name"
-              handelChange={(e) => {
-                console.log('')
-              }}
-              invalid={true}
-              isRequired={true}
+              name="Status"
+              title={'Status'}
+              data={[]}
+              isRequired={false}
+              toolTip="Hãy lựa chọn nếu không có sự lựa chọn hãy tạo thêm"
             />
           </div>
           <div className={Styles.flex1}>
@@ -91,10 +86,11 @@ function AddCategory() {
               setFileImages={setFileImages}
               size={1}
               width={100}
-              height={70}
+              height={100}
             />
           </div>
         </div>
+
         <div className={Styles.groupButtons}>
           <div className={Styles.buttonSubmit}>
             <BsPlusLg size={10} />

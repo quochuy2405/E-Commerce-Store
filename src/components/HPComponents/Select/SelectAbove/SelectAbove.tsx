@@ -7,7 +7,7 @@ import Styles from './SelectAbove.module.scss'
 function SelectAbove(props: Types): JSX.Element {
   return (
     <div className={`${Styles.SelectBox} ${props?.className}`}>
-      <p className={Styles.title}>
+      <div className={Styles.title}>
         {props?.title}
         {props?.isRequired && (
           <Tooltip
@@ -42,7 +42,7 @@ function SelectAbove(props: Types): JSX.Element {
             </span>
           </Tooltip>
         )}
-      </p>
+      </div>
 
       <Select
         options={props?.data}

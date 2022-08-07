@@ -34,7 +34,7 @@ interface Select {
   ) => void
   data?: Array<SelectKey>
   name?: string
-  title?: string
+  title?: string | React.ReactElement<any, any>
   invalid?: boolean
   textInvalid?: string
   isRequired?: boolean

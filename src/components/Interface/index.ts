@@ -50,6 +50,12 @@ interface Attribute {
   Sizes: Array<string>
 }
 
+interface Switch {
+  lable?: string
+  setCheck: React.Dispatch<React.SetStateAction<boolean>>
+  check: boolean
+}
+
 export type {
   TreeView,
   TreeItem,
@@ -58,5 +64,6 @@ export type {
   TreeItemAction,
   DropFile,
   FileView,
-  Attribute
+  Attribute,
+  Switch
 }
