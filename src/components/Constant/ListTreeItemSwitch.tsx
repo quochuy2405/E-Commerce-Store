@@ -1,6 +1,5 @@
 import { AddCategory } from '../BodyTree/Categories'
-import { AddVariant } from '../BodyTree/Products'
-import { Table } from '../HPComponents'
+import { AddVariant, ProductList } from '../BodyTree/Products'
 import type { TreeItemSwitch } from '../Interface'
 
 // List tree have body to render in body admin
@@ -12,7 +11,11 @@ const ListTreeItem: Array<TreeItemSwitch> = [
   { parentURL: 'order', opt: 'coupond', body: <>Tree coupond</> },
   { parentURL: 'order', opt: 'delivery', body: <>Tree delivery</> },
   { parentURL: 'product', opt: 'add', body: <AddVariant /> },
-  { parentURL: 'product', opt: 'list', body: <>Tree details</> },
+  {
+    parentURL: 'product',
+    opt: 'list',
+    body: <ProductList />
+  },
   { parentURL: 'product', opt: 'type', body: <>Tree type</> },
   { parentURL: 'customer', opt: 'accounts', body: <AddVariant /> },
   { parentURL: 'customer', opt: 'checkout', body: <>Tree checkout</> },

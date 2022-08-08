@@ -59,6 +59,11 @@ interface Switch {
 interface Bar {
   children?: React.ReactElement<any, any>
 }
+
+interface PopUpSelect {
+  className?: string | undefined
+}
+
 export type {
   TreeView,
   TreeItem,
@@ -69,5 +74,6 @@ export type {
   FileView,
   Attribute,
   Switch,
-  Bar
+  Bar,
+  PopUpSelect
 }

@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import Styles from '@/components/HPComponents/Table/TableBasic/TableBasic.module.scss'
+import Styles from '@/components/HPComponents/Table/TablePreview/TablePreview.module.scss'
 import type { Product } from '@/types'
 import { useSnackbar } from 'notistack'
-import { memo, useEffect, useState } from 'react'
+import { memo, useState } from 'react'
 import { BsTrash } from 'react-icons/bs'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import type { Table as Types } from '../../Interface'

@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import Styles from '@/components/HPComponents/Table/TableRevenue/TableRevenue.module.scss'
+import Styles from '@/components/HPComponents/Table/TableEditView/TableEditView.module.scss'
+import PopUpSelect from '@/components/PopUpSelect/PopUpSelect'
 import type { Product } from '@/types'
+import { Checkbox } from '@mui/material'
 import { useSnackbar } from 'notistack'
 import { memo, useState } from 'react'
 import { BsTrash } from 'react-icons/bs'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
-import { IoSettingsOutline } from 'react-icons/io5'
-import { TbTableExport } from 'react-icons/tb'
 import type { Table as Types } from '../../Interface'
 
-function TableRevenue(props: Types): JSX.Element {
+function TableEditView(props: Types): JSX.Element {
   const { datas, title, limit } = props
   const { enqueueSnackbar } = useSnackbar()
 
@@ -61,21 +61,11 @@ function TableRevenue(props: Types): JSX.Element {
   return (
     <>
       <div className={Styles.table}>
-        <div className={Styles.optionTable}>
-          <p className={Styles.title}>Name Table</p>
-          <div className={Styles.groupButton}>
-            <IoSettingsOutline size={20} />
-            <div className={Styles.buttonItem}>Export to CSV</div>
-            <div className={Styles.buttonItem}>
-              <p>Export</p> <TbTableExport size={16} />
-            </div>
-          </div>
-        </div>
-
         <div className={Styles.tableHeader}>
-          <div className={Styles.tableTH}>
-            <p>Xóa </p>
-          </div>
+          <Checkbox size="small" color={'warning'} style={{ color: 'white' }} />
+
+          <p style={{ padding: '0 20px' }}>Actions</p>
+
           {title.map((key: string) => (
             <div key={key} className={Styles.tableTH}>
               <p>{key} </p>
@@ -93,11 +83,10 @@ function TableRevenue(props: Types): JSX.Element {
             )
             .map((item: Product | any) => (
               <div className={Styles.tableTR} key={item.toString()}>
-                <div className={Styles.tableTD}>
-                  <p className={Styles.btnDelete}>
-                    <BsTrash size={24} />
-                  </p>
-                </div>
+                <Checkbox size="small" />
+
+                <PopUpSelect className={Styles.btnDelete} />
+
                 {Object.keys(item).map((key, index) => (
                   <div key={key} className={Styles.tableTD}>
                     {key.toLocaleLowerCase().includes('url') ? (
@@ -147,4 +136,4 @@ function TableRevenue(props: Types): JSX.Element {
   )
 }
 
-export default memo(TableRevenue)
+export default memo(TableEditView)

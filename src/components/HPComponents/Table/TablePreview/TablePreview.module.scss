@@ -4,38 +4,45 @@
   @include paperBlank;
   width: 100%;
   height: 100%;
+  overflow: scroll;
+
   border-radius: 5px;
-  padding: 20px 40px;
   display: flex;
   flex-direction: column;
+  padding-bottom: 30px;
 }
 .tableHeader {
   display: flex;
-  background-color: white;
+  width: fit-content;
+  background-color: var(--color-green);
   line-height: 55px;
-  padding: 0 1px;
-  margin: 10px 0;
   width: 100%;
 
+  padding: 0 20px;
   border-radius: 2px;
-  color: rgb(61, 61, 61);
+  color: white;
   font-weight: 600;
   font-size: 0.9rem;
-  border-bottom: 3px solid rgb(132, 132, 132);
+  border-radius: 3px;
 }
 
 .tableTH {
   flex: 1;
-  padding-left: 10px;
-  min-width: 100px;
+  min-width: 140px;
+  width: fit-content;
+  padding: 0 10px;
 }
 
 .tableBody {
   width: 100%;
-  height: 70%;
-  margin-bottom: 10px;
-  overflow: scroll;
-  box-shadow: 0 0 8px 1px rgb(224, 224, 224);
+  min-height: 100px;
+  margin: 10px 0;
+  position: relative;
+
+  padding: 0 20px;
+  border-radius: 3px;
+  overflow-y: scroll;
+  // box-shadow: 0 0 8px 1px rgb(224, 224, 224);
 }
 
 .title {
@@ -46,16 +53,27 @@
 .tableTR {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  background-color: rgb(255, 255, 255);
+  width: fit-content;
+
   line-height: 55px;
 
+  padding: 0 20px;
   border-radius: 2px;
   color: var(--color-text-gray);
   font-weight: 600;
   font-size: 0.9rem;
-  box-shadow: 0 0 4px 2px rgb(248, 248, 248);
+  padding: 10px 0;
+
+  p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    text-align: justify;
+    padding: 0 10px;
+  }
 }
 .tableTR + .tableTR {
   border-top: 2px solid rgb(218, 218, 218);
@@ -63,9 +81,9 @@
 }
 .tableTD {
   flex: 1;
-  padding-left: 10px;
-  min-width: 100px;
+  min-width: 140px;
   cursor: pointer;
+  text-align: center;
 }
 .optionTable {
   display: flex;
@@ -86,6 +104,9 @@
   align-items: center;
   align-self: flex-end;
   gap: 10px;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
 
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -120,4 +141,23 @@
   justify-content: center;
   align-items: flex-end;
   color: #789395;
+}
+
+.noItem {
+  width: 100px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  opacity: 0.8;
+  margin: 0 auto;
+  position: sticky;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.btnDelete {
+  color: var(--color-red);
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
 }

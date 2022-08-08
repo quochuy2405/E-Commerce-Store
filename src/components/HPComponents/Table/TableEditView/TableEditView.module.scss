@@ -8,15 +8,15 @@
 
   border-radius: 5px;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   padding-bottom: 30px;
 }
 .tableHeader {
   display: flex;
   width: fit-content;
-  background-color: var(--color-main);
+  background-color: var(--color-green);
   line-height: 55px;
+  width: 100%;
 
   padding: 0 20px;
   border-radius: 2px;
@@ -53,8 +53,9 @@
 .tableTR {
   display: flex;
   align-items: center;
-  width: fit-content;
 
+  min-width: fit-content;
+  width: 100%;
   line-height: 55px;
 
   padding: 0 20px;
@@ -156,6 +157,9 @@
 }
 .btnDelete {
   color: var(--color-red);
+  padding: 0 20px;
+
+  width: fit-content;
   opacity: 0.5;
   &:hover {
     opacity: 1;
